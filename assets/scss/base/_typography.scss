@@ -1,0 +1,103 @@
+
+/* -- Nimbus Sans -- */
+@import url("https://fontlibrary.org/face/nimbus-sans-l");
+
+/* -- Google Font (Arabic) -- */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300&display=swap');
+
+/* General Typography */
+
+body {
+  font-family: $font-stack-reg;
+  font-weight: normal;
+  font-style: normal;
+}
+
+h1 {
+  font-family: $font-stack-bold;
+  margin-top:0;
+  font-size: 3rem;
+  letter-spacing: -0.04em;
+}
+
+h2 {
+  font-family: $font-stack-bold;
+  margin-top:0;
+  line-height: 2rem;
+  font-size: 2rem;
+  letter-spacing: -0.01em;  
+}
+h3 {
+  font-family: $font-stack-bold;
+  margin-top:0;
+  font-size: 1rem;
+  letter-spacing: 0.01em;
+}
+
+a.lang {
+  font-size: 0.75rem;
+  text-decoration: none !important;
+  display: inline-block;
+
+  &:hover{
+    text-decoration: underline;
+    &::after {
+      color:$color-cream;
+    }
+  }
+  &::after {
+    content: '|';
+    display:inline-block;
+    padding-right: 0.5rem;
+    padding-left:0.5rem;
+  }
+
+  &:last-of-type {
+    &::after {
+      content: none;
+    }
+  }
+
+  &.ara {
+    /* switch separator side for right-to-left link */
+    &::after {
+      content:none;
+    }
+    &::before {
+      content: '|';
+      display:inline-block;
+      padding-right: 0.5rem;
+      padding-left:0.5rem;
+    }
+
+  }
+
+}
+
+.small-print {
+  font-size: 0.85rem;
+}
+
+
+/* -- Language specific -- */
+
+.lang {
+  &__title{
+    margin-top:3rem;
+    font-size: 0.75rem;
+  }
+  &__menu {
+    line-height: 1rem;
+  }
+}
+
+
+bdo[dir="rtl"] {
+  direction: rtl !important;
+  unicode-bidi: bidi-override !important;
+}
+.ara {
+   font-family: 'Cairo', sans-serif;
+    direction: rtl !important;
+   unicode-bidi: bidi-override !important;
+}

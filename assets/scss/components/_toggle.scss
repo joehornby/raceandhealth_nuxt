@@ -1,0 +1,10 @@
+label.toggle {
+  cursor: pointer;
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+input.toggle { display: none; }
+input.toggle:checked+div { visibility: hidden; }

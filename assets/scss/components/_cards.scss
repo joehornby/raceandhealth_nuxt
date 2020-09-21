@@ -1,0 +1,57 @@
+.cards {
+  grid-column: 2 / span 2;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-rows:auto;
+  grid-gap: 1rem;
+  width: auto;
+
+  a {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: none;
+      color: inherit;
+    }
+  }
+}
+.card {
+  padding: 2rem 1rem;
+  border-top: 2px solid $color-cream;
+  transition: all 100ms ease-in;
+  position: relative;
+  height: 100%;
+
+  p {
+    margin-bottom: 1rem;
+  }
+  h2 {
+    line-height: 1em;
+  }
+  &.light {
+    border-top: 2px solid $color-darkgrey;
+  }
+
+
+  &:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 14px 28px rgba($color-darkgrey,0.10), 0 10px 10px rgba($color-darkgrey,0.1);
+    transition: all 100ms ease-in;
+    &::before {
+      background-color: $color-red;
+      transition: all 300ms ease-in;
+    }
+  }
+
+  &::before{
+    content: 'Explore \2192';
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    border: 1px solid $color-darkgrey;
+    border-radius: 3px;
+    padding: 0.25rem 0.5rem;
+  }
+
+
+}

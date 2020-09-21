@@ -1,0 +1,7 @@
+.past-event {
+  h3::before {
+    content:'[past event]\A';
+    font-weight: 300;
+    white-space: pre;
+  }
+}

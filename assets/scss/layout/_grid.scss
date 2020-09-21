@@ -1,0 +1,80 @@
+/* // ===
+// Main grid layout
+// === */
+
+
+header,
+footer {
+  grid-column: span 1;
+}
+
+main {
+  grid-column: span 1;
+  width: 100%;
+  padding-top: $header-height;
+  padding-bottom: 0;
+}
+
+/* // ===
+// Sub grids
+// === */
+
+
+.grid-container {
+  width:100%;
+  max-width: $max-width;
+  position: relative;
+  margin-left: 0;
+  margin-right: 0;
+  display: grid;
+  grid-template-rows: auto;
+  grid-gap: 0;
+  padding: 1rem 1rem 0 1rem;
+
+  &__two-col {
+    display: block;
+
+    &--thirds{
+      display: block;
+    }
+  }
+
+  &__multi-col {
+    display: block;
+  }
+}
+
+@media (min-width: $bp-med) {
+  .grid-container {
+    width:auto;
+    max-width: $max-width;
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    &__two-col {
+      grid-template-columns: 50% 50%;
+
+      &--thirds{
+        grid-template-columns: minmax(200px, 1fr) repeat(auto-fit, minmax(150px, 2fr));
+      }
+    }
+
+    &__multi-col {
+      grid-template-columns: repeat(auto-fit, minmax(256px, 1fr));
+    }
+  }
+}
+
+.header-grid {
+  min-width: $min-width;
+  width: 100%;
+  max-width: $max-width;
+  display: grid;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  padding: 1rem;
+  grid-gap: 0;
+
+  grid-template-columns: 50% 50%;
+}

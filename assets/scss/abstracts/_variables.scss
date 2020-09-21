@@ -1,0 +1,34 @@
+/* Colours  */
+
+$color-cream: #f1eee6;
+$color-red: #f26b5b;
+$color-cyan: #5edbdb;
+$color-yellow: #f9e150;
+$color-darkgrey: #232424;
+$color-purple: #af74ed;
+$color-green: #87dd6b;
+
+$color-red--darker: #d1574e;
+
+
+/* Dimensions */
+$min-width: 200px;
+$max-width: 1024px;
+@media only screen and (-webkit-min-device-pixel-ratio: 1){
+  $min-width: 300px;
+  $max-width: 1400px;
+}
+
+$header-height: 180px;
+$header-height--reduced: 30px;
+$footer-height: 60px;
+
+/* Breakpoints */
+$bp-med: 1024px;
+$bp-large: 1200px;
+
+
+/* Typography */
+
+$font-stack-reg: NimbusSanLRegular,"Helvetica Neue", Helvetica-Neue, Helvetica, Arial, sans-serif;
+$font-stack-bold: NimbusSanLBold, "Helvetica Neue", Helvetica-Neue, Helvetica, Arial, sans-serif;

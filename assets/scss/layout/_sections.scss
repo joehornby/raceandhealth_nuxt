@@ -1,0 +1,49 @@
+.section {
+  width: auto;
+  padding: 15vh 0;
+  position: relative;
+  display:block;
+
+  &--full {
+    min-height: 85vh;
+  }
+}
+
+
+.heading {
+  margin-bottom: 3rem;
+  grid-column: span 1;
+
+  h1,h2 {
+    margin-top: 0;
+  }
+
+  &--left{
+    grid-column: 1 / span 1;
+    padding-right: 1rem;
+  }
+  &--right{
+    grid-column: 2 / -1;
+  }
+  &--full{
+    grid-column: 1 / -1;
+  }
+  &--dark {
+    color: $color-darkgrey;
+  }
+}
+
+.content {
+  &--full {
+    grid-column: 1 / -1;
+  }
+  &--left {
+    grid-column: 1 / span 1;
+  }
+  &--right {
+    grid-column: 2 / span 1;
+  }
+  .content--scrollx{
+    overflow-x: hidden;
+  }
+}

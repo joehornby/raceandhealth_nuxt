@@ -1,0 +1,86 @@
+
+.contact-form {
+  width:100%;
+  height:650px;
+  background:$color-cream;
+  border-radius:5px;
+  border: 1px solid $color-darkgrey;
+  margin: 0 auto;
+  padding:0 1rem;
+  box-sizing:border-box;
+  position:relative;
+
+
+  h2 {
+    margin:10px 0;
+    padding-bottom:10px;
+    color:$color-darkgrey;
+    border-bottom: 2px solid $color-darkgrey;
+    display: inline-block;
+  }
+
+  input, textarea {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    background: none;
+    outline: none;
+    resize: none;
+    border: 0;
+    transition: all .3s;
+    border-bottom: 2px solid $color-darkgrey;
+
+    &:focus {
+      border-bottom: 2px solid $color-red;
+    }
+  }
+
+  p::before {
+    content: attr(type);
+    display: block;
+    margin: 28px 0 0;
+    font-size: 1rem;
+    color: $color-darkgrey;
+  }
+
+  button {
+    width: auto;
+    float: right;
+    padding: 8px 12px;
+    margin: 8px 0 0;
+    border: 2px solid $color-darkgrey;
+    background: 0;
+    color: $color-darkgrey;
+    cursor: pointer;
+    transition: all .3s;
+
+    &:hover,
+    &:focus {
+      background:$color-red;
+    }
+  }
+
+  textarea {
+    background-color: $color-cream;
+    border: 2px solid $color-darkgrey;
+  }
+
+
+  .contact-form__info {
+    content:'Hi';
+    position:absolute;
+    bottom:-15px;
+    right: 0;
+    left: 0;
+    margin-right: auto;
+    margin-left: auto;
+    background:$color-darkgrey;
+    color:$color-cream;
+    width:90%;
+    padding:1rem;
+    border-radius:6px;
+    font-size:1rem;
+  }
+  span{margin:0 5px 0 15px}
+
+}

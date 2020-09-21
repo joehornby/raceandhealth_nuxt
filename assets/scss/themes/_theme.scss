@@ -1,0 +1,38 @@
+.dark {
+  background-color: $color-darkgrey;
+  color: $color-cream;
+
+  a {
+    text-decoration: underline;
+
+    font-weight: inherit;
+    color: inherit;
+    transition: color 250ms ease;
+
+    &:hover{
+      color: $color-red;
+      text-decoration: underline;
+      transition: color 250ms ease;;
+    }
+  }
+}
+
+  .light {
+    background-color: none;
+    color: $color-darkgrey;
+
+    a {
+      text-decoration: underline;
+
+      font-weight: inherit;
+      color: inherit;
+
+      transition: color 250ms ease;
+
+      &:hover{
+        color: $color-red--darker;
+        text-decoration: underline;
+        transition: color 250ms ease;
+      }
+    }
+  }

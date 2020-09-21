@@ -1,0 +1,75 @@
+.overline::before {
+  content: '';
+  position: absolute;
+  width: calc(100% - 2rem);
+  height: 3px;
+  top: 0;
+  left: 1rem;
+}
+
+
+
+.light .overline::before {
+    background-color: $color-darkgrey;
+}
+.dark .overline::before {
+    background-color: $color-cream;
+}
+
+.border-top {
+  margin-top: 2rem;
+  padding-top: 1rem;
+}
+.light .border-top {
+  border-top: 2px solid $color-darkgrey;
+}
+
+.dark .border-top {
+  border-top: 2px solid $color-cream;
+
+
+}
+
+@media only screen and (min-width:$bp-med) {
+  .circle {
+    margin:0;
+    padding:0;
+    position: fixed;
+    top:0;
+    left:0;
+    z-index: 21;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    &__large {
+      position: absolute;
+      border-radius: 50%;
+      width: 110vw;
+      height: 110vw;
+      bottom: -80vw;
+      left:-85vw;
+
+      &--accent {
+        background-color: $color-red;
+      }
+      &--light {
+        background-color: $color-cream;
+      }
+      &--dark {
+        background-color: $color-darkgrey;
+      }
+    }
+    &__small {
+      position: absolute;
+      border-radius: 50%;
+      width: 40vw;
+      height: 40vw;
+      bottom: -20vw;
+      left: 70vw;
+        &--accent {
+          background-color: $color-red;
+        }
+    }
+  }
+}
