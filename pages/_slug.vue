@@ -2,13 +2,13 @@
   <div>
     <h1>{{ page.fields.title }}</h1>
     <!-- <article v-html="$md.render(page.fields.content)"></article> -->
-    <p>{{ page.fields.content }}</p>
+    <div class="page-content" v-html="richTextHtml"></div>
   </div>
 </template>
 
 <script>
+import { documentToHtmlString } from "@contentful/rich-text-html-renderer"
   export default {
-
     data() {
       return {
         slug: this.$route.params.slug
@@ -20,6 +20,10 @@
         el => el.fields.slug === this.slug
       )
       return page[0]
+      },
+      richTextHtml() {
+        let richTextHtml = documentToHtmlString(this.page.fields.content)
+        return richTextHtml
       }
     },
     head() {
