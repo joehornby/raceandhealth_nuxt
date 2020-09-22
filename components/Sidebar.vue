@@ -5,7 +5,7 @@
       class="header__nav-mobile"
       aria-labelledby="menu-label"
     >
-      <navLinks />
+      <NavLinks />
     </nav>
   </div>
 </template>
