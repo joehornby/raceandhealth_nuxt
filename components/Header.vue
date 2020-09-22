@@ -9,7 +9,7 @@
 
         <div class="header__menu">
           <nav id="navigation" class="header__nav-desktop">
-            <navLinks />
+            <NavLinks />
           </nav>
 
           <span id="menu-label" hidden>Main menu</span>
