@@ -1,13 +1,28 @@
 <template>
-  <div>
-    <h1>{{ page.fields.title }}</h1>
-    <!-- <article v-html="$md.render(page.fields.content)"></article> -->
-    <div class="page-content" v-html="richTextHtml"></div>
+  <div class="section light">
+    <div class="grid-container grid-container__two-col">
+      <div class="heading heading--left">
+        <h1>{{ page.fields.title }}</h1>
+      </div>
+      <article class="page-content content--right" v-html="richTextHtml"></article>
+      <a v-if="page.fields.ctaUrl" href="page.fields.ctaUrl">
+        <button>
+          {{ page.fields.cta }}
+        </button>
+      </a>
+      <nuxt-link v-if="page.fields.ctaRoute" to="page.fields.ctaRoute">
+        <button>
+          {{ page.fields.cta }}
+        </button>
+      </nuxt-link>
+    </div>
+    
   </div>
 </template>
 
 <script>
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer"
+
   export default {
     data() {
       return {
@@ -15,25 +30,29 @@ import { documentToHtmlString } from "@contentful/rich-text-html-renderer"
       }
     },
     computed: {
+      
       page() {
-      let page = this.$store.state.pages.filter(
-        el => el.fields.slug === this.slug
-      )
-      return page[0]
+        let page = this.$store.state.pages.find(
+          el => el.fields.slug === this.slug
+        )
+        return page
       },
       richTextHtml() {
         let richTextHtml = documentToHtmlString(this.page.fields.content)
         return richTextHtml
-      }
-    },
-    head() {
-      return {
-        title: `Race & Health | `//${this.store.state.pages.fields.title}`
-      }
+      },
     }
   }
 </script>
 
 <style lang="scss" scoped>
-
+  .page-content {
+    & h2 {
+      grid-column: 1 / span 1;
+      padding-right: 1rem;
+    }
+    p, h3 {
+      grid-column: 2 / span 1;
+    }
+  } 
 </style>
