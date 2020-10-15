@@ -19,10 +19,10 @@ export const actions = {
     try {
       if (!client) return
       const response = await client.getEntries({
-        content_type: process.env.CTF_PAGE_TYPE_ID
+        content_type: process.env.CTF_PAGE_TYPE_ID,
+        order: "fields.order"
       });
-      if (response.items.length > 0) commit("updatePages", response.items)
-      else console.log("nothing returned")
+      if (response.items.length > 0) commit("updatePages", response.items);
     } catch (err) {
       console.error(err)
     }
@@ -32,7 +32,7 @@ export const actions = {
       if (!client) return
       const response = await client.getEntries({
         content_type: process.env.CTF_OURVISION_TYPE_ID,
-        order: 'sys.createdAt'
+        order: "sys.createdAt"
       });
       if (response.items.length > 0) commit("updateVision", response.items)
     } catch (err) {
