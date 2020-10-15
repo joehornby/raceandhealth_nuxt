@@ -3,6 +3,9 @@
     <Header />
     <Sidebar />
     <Nuxt id="content" />
+    <div class="graphics">
+      <div class="circle-large circle-large--accent"></div>
+    </div>
     <Footer />
   </div>
 </template>
@@ -128,5 +131,45 @@ html {
   grid-gap: 0;
   padding: 0;
   min-height: 100%;
+  height: auto;
+}
+@media only screen and (min-width:$bp-med) {
+  .graphics {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    min-height: 100%;
+    pointer-events: none;
+    overflow:hidden;
+    z-index: 0;
+    .circle-large {
+      position: absolute;
+      border-radius: 50%;
+      width: 110vw;
+      height: 110vw;
+      bottom: -65vw;
+      left:-85vw;
+
+      &--accent {
+        background-color: $color-red;
+      }
+      &--light {
+        background-color: $color-cream;
+      }
+      &--dark {
+        background-color: $color-darkgrey;
+      }
+    }
+    .circle-small {
+      position: absolute;
+      border-radius: 50%;
+      width: 40vw;
+      height: 40vw;
+      bottom: -20vw;
+      left: 70vw;
+        &--accent {
+          background-color: $color-red;
+        }
+      }
+    }
 }
 </style>
