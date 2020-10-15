@@ -1,10 +1,11 @@
 <template>
-  <div>
     <header class="header">
       <a class="skip" href="#content" tabindex="0">Skip to content</a>
       <div class="header-grid">
-        <div id="logo-img" class="header__logo header__logo--primary">
-          <nuxt-link to="/"></nuxt-link>
+        <div id="logo-img" class="header__logo" :class="{'header__logo--shrink' : scrollPosition > 50 }">
+          <nuxt-link to="/">
+            <img :src="require(`~/assets/logo/${logo}`)" alt="Racism, Discrimination, Xenophobia and Health Logo">
+          </nuxt-link>
         </div>
 
         <div class="header__menu">
@@ -29,11 +30,39 @@
         </div>
       </div>
     </header>
-  </div>
 </template>
 
 <script>
-export default {}
+import throttle from 'lodash.throttle'
+export default {
+  data() {
+    return {
+      scrollPosition: null,
+      logoPrimary: "RXDH_Logo_primary_light.svg",
+      logoAlt: "RXDH_Logo_alt_light.svg",
+      logo: "RXDH_Logo_primary_light.svg"
+    }
+  },
+  methods: {
+    updateScroll() {
+      this.scrollPosition =  window.scrollY
+      this.changeLogo()
+    },
+    changeLogo() {
+      if (this.scrollPosition > 50) {
+        this.logo = this.logoAlt
+      } else {
+        this.logo = this.logoPrimary
+      }
+    }
+  },
+  mounted() {
+    window.addEventListener('scroll', throttle( this.updateScroll, 200 ))
+  },
+  destroy() {
+    window.removeEventListener('scroll', throttle( this.updateScroll, 200 ))
+  }
+}
 </script>
 
 <style lang="scss">
@@ -42,6 +71,7 @@ export default {}
   position: absolute;
   left: 50%;
   top: 0.25rem;
+  color: $color-cream;
   &:not(:focus):not(:active) {
     clip: rect(0 0 0 0);
     clip-path: inset(50%);
@@ -63,38 +93,20 @@ export default {}
   z-index: 30;
 
   &__logo {
+    height: calc($header-height + 1rem);
     grid-column: 1 / span 1;
     margin-left: 0;
     display: block;
     padding: 1rem 0;
-
-    &--primary {
-      height: $header-height;
-      background: url('~assets/logo/RXDH_Logo_primary_light.svg');
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-origin: content-box;
-
-      transform-origin: bottom left;
-      transition: all 200ms ease-in;
-
-      a {
-        display: block;
-        height: 100%;
-        width: $header-height;
-      }
+    a {
+      display: block;
+      height: 100%;
+      width: $header-height;
+      transition: height 200ms ease-out;
     }
-
-    &--secondary {
-      height: $header-height--reduced;
-
-      background: url('~assets/logo/RXDH_Logo_alt_light.svg');
-      background-size: $header-height--reduced $header-height--reduced;
-      background-repeat: no-repeat;
-
-      transform-origin: bottom left;
-      transition: all 200ms ease-out;
-
+    
+    &--shrink {
+      transition: height 100ms ease-out;
       position: relative;
 
       a {
@@ -103,6 +115,7 @@ export default {}
         width: $header-height--reduced;
         position: absolute;
         top: 0;
+        transition: height 200ms ease-out;
       }
     }
   }
