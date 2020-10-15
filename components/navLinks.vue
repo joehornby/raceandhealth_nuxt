@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul>
-      <li v-for="page in pages" :key="page.fields.slug"><nuxt-link :to="`/${page.fields.slug}`">{{ page.fields.title }}</nuxt-link></li>
+      <li v-for="menuItem in menuItems" :key="menuItem.fields.slug"><nuxt-link :to="`/${menuItem.fields.slug}`">{{ menuItem.fields.title }}</nuxt-link></li>
     </ul>
   </div>
 </template>
@@ -12,8 +12,9 @@ export default {
     return {}
   },
   computed: {
-    pages() {
-      return this.$store.state.pages
+    menuItems() {
+      let menuItems = this.$store.state.pages.filter(i => (i.fields.order > 0))
+      return menuItems
     }
   }
 }
