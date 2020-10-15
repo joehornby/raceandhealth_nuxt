@@ -1,12 +1,14 @@
 <template>
-  <div>
-    {{ defaultLanguage.fields.vision }}
+  <div class="content--right vision">
+    <p>
+      {{ defaultLanguage.fields.vision }}
+    </p>
   </div>
 </template>
 
 <script>
   export default {
-    transition: "",
+    transition: "page",
     data() {
       return {
         firstLanguageSlug: "eng",
