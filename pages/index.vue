@@ -5,7 +5,7 @@
       <div class="heading heading--left">
         <h1>{{ pageTitle }}</h1>
         <p class="lang__title">
-          Select Language
+          Select Language  <a href="#after-lang" class="skip skip--lang">Skip Languages</a>
         </p>
         <div class="lang__menu">
           <nuxt-link 
@@ -15,7 +15,7 @@
             :to="`/our-vision/${lang.fields.slug}`">
               {{ lang.fields.language }}
           </nuxt-link>
-          <span class="small-print">
+          <span id="after-lang" class="small-print">
             If something doesn't look right, please <nuxt-link to="/contact">let us know</nuxt-link>.
           </span>
         </div>
@@ -66,5 +66,10 @@ export default {
   span.small-print {
     display: block;
     margin-top: 2em;;
+  }
+  .skip--lang {
+    position: relative;
+    left: unset;
+    top: unset;
   }
 </style>
