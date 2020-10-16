@@ -1,42 +1,78 @@
-.btn-primary {
-
-  display: inline-block;
-  cursor: pointer;
-  margin: 2rem 0 0;
-
-  /* font */
-  color: $color-darkgrey;
-  font-weight: 600;
-  font-style: normal;
-  a {
-    text-decoration: none !important;
-
-    &:hover {
-      text-decoration: none !important;
-      color: $color-darkgrey;
-    }
-  }
-  /* remove underline */
-  text-decoration: none;
-
-  /* border */
-  border-radius: 5px;
-
-  /* transitions */
-  transition: all 100ms ease-in;
-
-  /* other */
+/* General Button Style Reset */
+.btn {
+  border: 2px solid $color-red;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 700;
+  color: inherit;
   background-color: $color-red;
-  padding: 0.75rem 2rem;
+  cursor: pointer;
+  padding: 1em 3.5em;
+  display: inline-block;
+  margin: 1rem 2rem 1rem 0;
+  letter-spacing: -0.05em;
+  outline: none;
+  position: relative;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+  position: relative;
 
+  &:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+  }
+  }
 
+  /* Primary Button*/
+  .btn-primary {
+    border-radius: 50px;
+    color: $color-darkgrey;
+    overflow: hidden;
+
+  &:active {
+    background-color: $color-red;
+    color: $color-cream;
+    }
 
   &:hover {
-    cursor: pointer;
-    color: $color-darkgrey;
-    background-color: $color-red--darker;
-    /* transitions */
-    transition: all 250ms ease-in;
+    background: rgba($color-red, 0.8);
+    }
 
+    &::before {
+      position: absolute;
+      height: 100%;
+      font-size: 125%;
+      line-height: 0;
+      color: $color-darkgrey;
+      -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+      transition: all 0.3s;
+      left: 70%;
+      opacity: 0;
+      top: 50%;
+      }
+
+      &:active::before {
+        color: $color-cream;
+      }
+
+  &:hover::before {
+    left: 80%;
+    opacity: 1;
   }
+  }
+
+  .icon-arrow-right:before {
+    font-family: sans-serif;
+    content: "\2192";
+}
+.btn-secondary {
+  margin-left: 0;
+  margin-right: 2rem;
+  display: inline-block;
 }
