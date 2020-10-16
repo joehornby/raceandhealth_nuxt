@@ -1,11 +1,21 @@
 <template>
   <div class="section light">
-    <div class="page-content grid-container grid-container__two-col">
-      <div class="heading heading--full">
+    <div class="page-content grid-container grid-container__multi-col">
+      <div class="heading heading--left">
         <h1>{{ page.fields.title }}</h1>
+        <p v-html="pageHtml"></p>
+        <nuxt-link to="resources/all">List all resources</nuxt-link>
       </div>
-      <div class="content content--full" v-html="pageHtml"></div>
-      <nuxt-link to="resources/all">View all</nuxt-link>
+      <div class="cards">
+        <nuxt-link v-for="category in resources" :key="category.fields.slug" :to="`/${category.fields.slug}`">
+        <div class="card light">
+          <h2>{{ category.fields.category }}</h2>
+          <p>
+            {{ category.fields.description }}
+          </p>
+        </div>
+      </nuxt-link>
+      </div>
     </div>
     <nuxt-child v-for="category in resources" :key="category.fields.slug" />
     
