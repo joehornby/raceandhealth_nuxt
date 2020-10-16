@@ -3,7 +3,7 @@
       <a class="skip" href="#content" tabindex="0">Skip to content</a>
       <div class="header-grid">
         <div id="logo-img" class="header__logo" :class="{'header__logo--shrink' : scrollPosition > 50 }">
-          <nuxt-link to="/">
+          <nuxt-link tab-index="-1" to="/">
             <img :src="require(`~/assets/logo/${logo}`)" alt="Racism, Discrimination, Xenophobia and Health Logo">
           </nuxt-link>
         </div>
