@@ -39,7 +39,7 @@ export default {
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
-  plugins: ["~/plugins/contentful", "~/plugins/pages", "~/plugins/vision"],
+  plugins: ["~/plugins/contentful", "~/plugins/pages", "~/plugins/vision", "~/plugins/resources"],
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components

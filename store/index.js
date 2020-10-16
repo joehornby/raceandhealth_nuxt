@@ -2,7 +2,8 @@ import client from "~/plugins/contentful"
 
 export const state = () => ({
   pages: null,
-  vision: null
+  vision: null,
+  resources: null
 });
 
 export const mutations = {
@@ -11,7 +12,10 @@ export const mutations = {
   },
   updateVision: (state, vision) => {
     state.vision = vision
-  }
+  },
+  updateResources: (state, resources) => {
+    state.resources = resources
+  },
 };
 
 export const actions = {
@@ -35,6 +39,18 @@ export const actions = {
         order: "sys.createdAt"
       });
       if (response.items.length > 0) commit("updateVision", response.items)
+    } catch (err) {
+      console.error(err)
+    }
+  },
+  async getResources({ commit }) {
+    try {
+      if(!client) return
+      const response = await client.getEntries({
+        content_type: process.env.CTF_RESOURCES_TYPE_ID,
+        order: "-sys.updatedAt"
+      });
+      if (response.items.length > 0) commit("updateResources", response.items)
     } catch (err) {
       console.error(err)
     }
