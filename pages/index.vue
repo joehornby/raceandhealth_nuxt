@@ -20,7 +20,10 @@
           </span>
         </div>
       </div>
-      <nuxt-child :key="$route.params.slug" />
+      <div class="content--right vision">
+        <nuxt-child :key="$route.params.lang" />
+      </div>
+      
       <div class="content--right" v-html="homePageHtml"></div>
     </div>
   </div>

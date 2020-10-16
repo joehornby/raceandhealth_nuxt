@@ -1,9 +1,7 @@
 <template>
-  <div class="content--right vision">
     <p>
       {{ defaultLanguage.fields.vision }}
     </p>
-  </div>
 </template>
 
 <script>
