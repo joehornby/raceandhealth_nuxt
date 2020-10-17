@@ -1,6 +1,6 @@
 <template>
   <div class="section light">
-    <div class="grid-container grid-container__two-col">
+    <div class="grid-container grid-container__two-col overline">
       <div class="heading heading--left">
         <h1>{{ page.fields.title }}</h1>
       </div>

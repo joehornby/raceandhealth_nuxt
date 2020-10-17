@@ -1,5 +1,6 @@
 <template>
-  <div class="page-content grid-container grid-container__two-col">
+  <div class="section light">
+    <div class="page-content grid-container grid-container__two-col overline">
       <div class="heading heading--left   ">
         <a :id="category.fields.slug" class="anchor"></a>
         <h2>{{ category.fields.category }}</h2>
@@ -7,6 +8,7 @@
       <div class="content--right" v-html="html(category.fields.resources)">
       </div>
     </div>
+  </div>
 </template>
 
 <script>

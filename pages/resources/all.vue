@@ -1,6 +1,6 @@
 <template>
   <div class="section light">
-    <div v-for="category in resources" :key="category.fields.slug" class="page-content grid-container grid-container__two-col">
+    <div v-for="category in resources" :key="category.fields.slug" class="page-content grid-container grid-container__two-col overline">
       <div class="heading heading--left   ">
         <a :id="category.fields.slug" class="anchor"></a>
         <h2>{{ category.fields.category }}</h2>
