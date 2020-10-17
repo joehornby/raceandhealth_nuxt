@@ -117,6 +117,7 @@ export default {
 .footer {
   #mc_embed_signup {
     margin-top: 2rem;
+    max-width: 50ch;
   }
 
   label {
@@ -128,30 +129,36 @@ export default {
     display: block;
     background-color: $color-darkgrey;
     color: $color-cream;
-    width: 100%;
+    width: 60%;
     margin-top: 1rem;
-    padding: 0.75rem 1rem;
-    border: 3px solid $color-cream;
+    padding-left: 1rem;
+    border: 2px solid $color-cream;
+    border-radius: 62.5rem 0 0 62.5rem;
+    border-right: 0;
+    float: left;
+    height: 3rem;
+    font-size: 1rem;
   }
 
   input[type="submit"] {
-    background-color: transparent;
-    border-radius: 50px;
-    border-color: $color-cream;
-
-    &:placeholder {
-      color: rgba($color-cream, 1);
-    }
-
-    &:hover {
+    background-color: $color-cream;
+    color: $color-darkgrey;
+    border-radius: 0 62.5rem 62.5rem 0;
+    // border: 2px solid $color-cream;
+    float: right;
+    width: 40%;
+    height: 3em;
+    padding: unset;
+    &:hover,
+    &:focus {
       color: $color-darkgrey;
-      background-color: $color-cream;
+      background-color: $color-red;
     }
   }
 }
 
 #mc-embedded-subscribe {
   margin: 0;
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 </style>
