@@ -1,6 +1,6 @@
 /* General Button Style Reset */
 .btn {
-  border: 2px solid $color-red;
+  border: none;
   font-family: inherit;
   font-size: inherit;
   font-weight: 700;
@@ -39,8 +39,9 @@
     color: $color-cream;
     }
 
-  &:hover {
-    background: rgba($color-red, 0.8);
+  &:hover,
+  &:focus {
+    background: darken(saturate($color-red, 1%), 10%);
     }
 
     &::before {
@@ -75,4 +76,14 @@
   margin-left: 0;
   margin-right: 2rem;
   display: inline-block;
+  background-color: transparent;
+  color: $color-cream;
+  border: 2px solid $color-cream;
+  border-radius: 50px;
+
+  &:hover,
+  &:focus {
+    background-color: $color-cream;
+    color: $color-darkgrey;
+  }
 }
