@@ -7,7 +7,7 @@
         <nuxt-link to="resources/all">List all resources</nuxt-link>
       </div>
       <div class="cards">
-        <nuxt-link v-for="category in resources" :key="category.fields.slug" :to="`/${category.fields.slug}`">
+        <nuxt-link v-for="category in resources" :key="category.fields.slug" :to="`${page.fields.slug}/${category.fields.slug}`">
         <div class="card light">
           <h2>{{ category.fields.category }}</h2>
           <p>
