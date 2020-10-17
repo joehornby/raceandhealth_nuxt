@@ -11,6 +11,18 @@
 </template>
 <script>
 export default {
+  computed: {
+    isSidebar() {
+        return this.$store.getters['navtoggleSidebar']
+    }
+  },
+  watch: {
+    '$route': function() {
+      if (process.client && this.isSidebar && window.innerWidth < 720) {
+          this.$store.dispatch('navtoggleSidebar')
+      }
+    }
+  },
   head: {
     script: [
       {
