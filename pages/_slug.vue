@@ -13,6 +13,20 @@
           {{ page.fields.cta }}
         </button>
       </nuxt-link>
+      </div>
+      <article class="page-content content--right" v-html="richTextHtml"></article>
+      <div class="content--right">
+        <a v-if="page.fields.ctaUrl" :href="page.fields.ctaUrl">
+          <button class="btn btn-primary icon-arrow-right">
+            {{ page.fields.cta }}
+          </button>
+        </a>
+        <nuxt-link v-if="page.fields.ctaRoute" :to="page.fields.ctaRoute">
+          <button class="btn btn-primary icon-arrow-right">
+            {{ page.fields.cta }}
+          </button>
+        </nuxt-link>
+      </div>
     </div>
     
   </div>
