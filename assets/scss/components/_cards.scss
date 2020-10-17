@@ -39,7 +39,7 @@
     transition: all 100ms ease-in;
     &::before {
       background-color: $color-red;
-      transition: all 300ms ease-in;
+      // transition: all 300ms ease-in;
     }
   }
 
@@ -49,8 +49,8 @@
     bottom: 1rem;
     left: 1rem;
     border: 1px solid $color-darkgrey;
-    border-radius: 3px;
-    padding: 0.25rem 0.5rem;
+    border-radius: 50px;
+    padding: 0.33rem 1rem;
   }
 
 
