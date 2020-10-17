@@ -129,7 +129,7 @@ export default {
     display: block;
     background-color: $color-darkgrey;
     color: $color-cream;
-    width: 60%;
+    width: 67%;
     margin-top: 1rem;
     padding-left: 1rem;
     border: 2px solid $color-cream;
@@ -146,7 +146,7 @@ export default {
     border-radius: 0 62.5rem 62.5rem 0;
     // border: 2px solid $color-cream;
     float: right;
-    width: 40%;
+    width: 33%;
     height: 3em;
     padding: unset;
     &:hover,

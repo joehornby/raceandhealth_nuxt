@@ -45,4 +45,50 @@ export default {
       color: $color-red;
     }
   }
+
+  /* Full size menu */
+  @media only screen and (min-width: $bp-large) {
+    ul {
+      padding: 0;
+      list-style: none;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      margin: 0;
+    }
+
+    li {
+      display: inline;
+
+    }
+
+    a {
+      color: $color-cream;
+      transition: color 250ms ease-in-out;
+      position: relative;
+      text-decoration: none;
+
+      &::before {
+        content: '';
+        height: 1px;
+        position: absolute;
+        width: 100%;
+
+        background-color: rgba($color-cream,0);
+        transform: scaleX(0);
+        transition: all 250ms ease-in-out 0s;
+        bottom:-0.3rem;
+      }
+
+      &:hover {
+
+        &::before {
+          background-color: rgba($color-cream,1);
+          transform: scaleX(1);
+          transition: all 250ms ease-in-out;
+        }
+
+      }
+    }
+  }
 </style>
