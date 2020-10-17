@@ -18,7 +18,8 @@
             id="menu-toggle"
             class="header__nav-toggle"
             aria-labelledby="menu-label"
-            aria-expanded="false"
+            :aria-expanded="isSidebar"
+            @click="$store.dispatch('nav/toggleSidebar')"
           >
             <span></span>
           </button>
@@ -41,6 +42,11 @@ export default {
       logoPrimary: "RXDH_Logo_primary_light.svg",
       logoAlt: "RXDH_Logo_alt_light.svg",
       logo: "RXDH_Logo_primary_light.svg"
+    }
+  },
+  computed: {
+    isSidebar() {
+      return this.$store.getters['nav/toggleSidebar']
     }
   },
   methods: {
@@ -93,7 +99,7 @@ export default {
   z-index: 30;
 
   &__logo {
-    height: calc(#{$header-height} + 1rem);
+    height: auto;
     grid-column: 1 / span 1;
     margin-left: 0;
     display: block;
@@ -106,7 +112,6 @@ export default {
     }
     
     &--shrink {
-      transition: height 100ms ease-out;
       position: relative;
 
       a {
