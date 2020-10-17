@@ -4,6 +4,7 @@
       <div class="heading heading--left   ">
         <a :id="category.fields.slug" class="anchor"></a>
         <h2>{{ category.fields.category }}</h2>
+        <nuxt-link to="/resources">&larr; Back to resources hub</nuxt-link>
       </div>
       <div class="content--right" v-html="html(category.fields.resources)">
       </div>
