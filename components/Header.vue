@@ -93,7 +93,7 @@ export default {
   z-index: 30;
 
   &__logo {
-    height: calc($header-height + 1rem);
+    height: calc(#{$header-height} + 1rem);
     grid-column: 1 / span 1;
     margin-left: 0;
     display: block;
