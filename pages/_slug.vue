@@ -29,6 +29,11 @@ import { documentToHtmlString } from "@contentful/rich-text-html-renderer"
         slug: this.$route.params.slug
       }
     },
+    head() {
+      return {
+        title: `Race & Health | ${this.page.fields.title}`
+      }
+    },
     computed: {
       
       page() {

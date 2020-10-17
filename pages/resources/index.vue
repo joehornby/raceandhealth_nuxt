@@ -26,6 +26,11 @@
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer"
 
   export default {
+    head() {
+      return {
+        title: `Race & Health | ${this.page.fields.title}`
+      }
+    },
     data() {
       return {
         slug: "resources"
