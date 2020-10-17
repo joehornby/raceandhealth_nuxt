@@ -80,17 +80,7 @@ export default {
       };
     }
   },
-  generate: {
-    routes() {
-      return Promise.all([
-        client.getEntries({
-          content_type: "page"
-        })
-      ]).then(([pages]) => {
-        return [...pages.items.map(entry => entry.fields.slug)];
-      });
-    }
-  },
+  generate: {},
   env: {
     CTF_CDA_ACCESS_TOKEN: process.env.CTF_CDA_ACCESS_TOKEN,
     CTF_SPACE_ID: process.env.CTF_SPACE_ID,
