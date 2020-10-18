@@ -1,6 +1,6 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/2bbcce1b-3adb-461e-8400-faa17e0478cf/deploy-status)](https://app.netlify.com/sites/raceandhealth/deploys)
 
-# raceandhealth
+# Race and Health dot org
 
 Nuxt app for raceandhealth.org.
 
