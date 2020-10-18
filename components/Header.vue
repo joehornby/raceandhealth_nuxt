@@ -133,5 +133,12 @@ export default {
     display: block;
     margin: auto 0;
   }
+  .header__nav-desktop {
+    color: $color-cream;
+    display: block;
+    z-index: 999;
+    transition: transform 400ms ease-in-out;
+    width: 100%;
+  }
 }
 </style>

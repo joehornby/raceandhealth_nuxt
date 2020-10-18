@@ -59,7 +59,7 @@ export default {
 
     li {
       display: inline;
-
+      margin: 0;
     }
 
     a {
@@ -81,7 +81,7 @@ export default {
       }
 
       &:hover {
-
+        color: $color-cream;
         &::before {
           background-color: rgba($color-cream,1);
           transform: scaleX(1);
