@@ -1,5 +1,11 @@
 # raceandhealth
 
+Nuxt app for raceandhealth.org.
+
+Work in progress migrating from original HTML + CSS version.
+
+Stack: Nuxt / Contentful
+
 ## Build Setup
 
 ```bash
