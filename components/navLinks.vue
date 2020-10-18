@@ -19,7 +19,9 @@ export default {
   },
   methods: {
     hideSidebar() {
-      this.$store.dispatch('nav/toggleSidebar')
+      if (this.$store.getters['nav/toggleSidebar']) {
+        this.$store.dispatch('nav/toggleSidebar')
+      }
     }
   }
 }
