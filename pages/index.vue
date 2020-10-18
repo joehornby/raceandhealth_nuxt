@@ -26,17 +26,17 @@
       
       <div class="content--right" v-html="homePageHtml"></div>
       <div class="content--right fle">
-        <a v-if="homepage.fields.ctaUrl" :href="page.fields.ctaUrl">
+        <a v-if="homepage.fields.ctaUrl" :href="page.fields.ctaUrl" tabindex="-1">
           <button class="btn btn-primary icon-arrow-right">
             {{ homepage.fields.cta }}
           </button>
         </a>
-        <nuxt-link v-if="homepage.fields.ctaRoute" :to="homepage.fields.ctaRoute">
+        <nuxt-link v-if="homepage.fields.ctaRoute" :to="homepage.fields.ctaRoute" tabindex="-1">
           <button class="btn btn-primary icon-arrow-right">
             {{ homepage.fields.cta }}
           </button>
         </nuxt-link>
-          <a href="https://aoc.ucl.ac.uk/alumni/public-gbp-single?id=068a76fa-dd00-4ba5-8acb-3ce4b79cd224" target="_blank">
+          <a href="https://aoc.ucl.ac.uk/alumni/public-gbp-single?id=068a76fa-dd00-4ba5-8acb-3ce4b79cd224" target="_blank" tabindex="-1">
               <button class="btn btn-secondary">Donate to our cause</button>
           </a>
       </div>

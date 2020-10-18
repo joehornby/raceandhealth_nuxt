@@ -26,14 +26,14 @@
     -moz-transition: all 0.3s;
     transition: all 0.3s;
   }
-  }
+}
 
-  /* Primary Button*/
-  .btn-primary {
-    border-radius: 50px;
-    color: $color-darkgrey;
-    overflow: hidden;
-
+/* Primary Button*/
+.btn-primary {
+  border-radius: 50px;
+  color: $color-darkgrey;
+  overflow: hidden;
+  border: rgba($color-cream,0) solid 2px;
   &:active {
     background-color: $color-red;
     color: $color-cream;
@@ -42,35 +42,39 @@
   &:hover,
   &:focus {
     background: darken(saturate($color-red, 1%), 10%);
+  }
+
+  &:focus {
+    border: $color-cream solid 2px;
+  }
+
+  &::before {
+    position: absolute;
+    height: 100%;
+    font-size: 125%;
+    line-height: 0;
+    color: $color-darkgrey;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    left: 70%;
+    opacity: 0;
+    top: 50%;
     }
 
-    &::before {
-      position: absolute;
-      height: 100%;
-      font-size: 125%;
-      line-height: 0;
-      color: $color-darkgrey;
-      -webkit-transition: all 0.3s;
-      -moz-transition: all 0.3s;
-      transition: all 0.3s;
-      left: 70%;
-      opacity: 0;
-      top: 50%;
-      }
-
-      &:active::before {
-        color: $color-cream;
-      }
+    &:active::before {
+      color: $color-cream;
+    }
 
   &:hover::before {
     left: 80%;
     opacity: 1;
   }
-  }
+}
 
-  .icon-arrow-right:before {
-    font-family: sans-serif;
-    content: "\2192";
+.icon-arrow-right:before {
+  font-family: sans-serif;
+  content: "\2192";
 }
 .btn-secondary {
   margin-left: 0;
