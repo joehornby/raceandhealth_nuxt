@@ -89,9 +89,11 @@ export default {
 
       text-decoration: none;
 
-      &:hover {
+      &:hover,
+      &:focus {
         color: $color-red--darker;
         text-decoration: none;
+        outline: 0;
       }
     }
   }
@@ -138,6 +140,11 @@ export default {
     float: left;
     height: 3rem;
     font-size: 1rem;
+    
+    &:focus {
+      outline: 0;
+      border-color: $color-red;
+    }
   }
 
   input[type="submit"] {
