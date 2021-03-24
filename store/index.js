@@ -3,7 +3,9 @@ import client from "~/plugins/contentful"
 export const state = () => ({
   pages: null,
   vision: null,
-  resources: null
+  resources: null,
+  events: null,
+  quarterly: null
 });
 
 export const mutations = {
@@ -16,6 +18,12 @@ export const mutations = {
   updateResources: (state, resources) => {
     state.resources = resources
   },
+  updateEvents: (state, events) => {
+    state.events = events
+  },
+  updateQuarterly: (state, quarterly) => {
+    state.quarterly = quarterly
+  }
 };
 
 export const actions = {
@@ -51,6 +59,30 @@ export const actions = {
         order: "-sys.updatedAt"
       });
       if (response.items.length > 0) commit("updateResources", response.items)
+    } catch (err) {
+      console.error(err)
+    }
+  },
+  async getEvents({ commit }) {
+    try {
+      if(!client) return
+      const response = await client.getEntries({
+        content_type: process.env.CTF_EVENTS_TYPE_ID,
+        order: "-sys.createdAt"
+      });
+      if (response.items.length > 0) commit("updateEvents", response.items)
+    } catch (err) {
+      console.error(err)
+    }
+  },
+  async getQuarterly({ commit }) {
+    try {
+      if(!client) return
+      const response = await client.getEntries({
+        content_type: process.env.CTF_QUARTERLY_TYPE_ID,
+        order: "-fields.date"
+      });
+      if (response.items.length > 0) commit("updateQuarterly", response.items)
     } catch (err) {
       console.error(err)
     }
