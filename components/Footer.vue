@@ -3,10 +3,10 @@
     <div class="grid-container grid-container__two-col">
       <!-- Begin Mailchimp Signup Form -->
 
-      <div id="mc_embed_signup">
+      <div id="mc_embed_signup" class="footer--right">
         <form action="https://raceandhealth.us2.list-manage.com/subscribe/post?u=aeab444f69b595499b9019150&amp;id=7f5bdb1ed8" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
           <div id="mc_embed_signup_scroll">
-            <label for="mce-EMAIL">Subscribe to The Race &amp; Health Quarterly to follow our latest events, publications, and thoughts.</label>
+            <label for="mce-EMAIL">Subscribe to The Race &amp; Health Quarterly</label>
             <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
             <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
             <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_aeab444f69b595499b9019150_7f5bdb1ed8" tabindex="-1" value=""></div>
@@ -17,11 +17,6 @@
       <!--End mc_embed_signup-->
     </div>
     <div class="grid-container grid-container__two-col">
-      <div class="footer__links">
-        <nuxt-link to="/work-with-us">
-          Work with us
-        </nuxt-link>
-      </div>
       <div class="footer__social">
         <a href="https://twitter.com/raceandhealth" title="twitter">
           <i class="fab fa-twitter"></i>
@@ -40,6 +35,7 @@
         </a>
       </div>
       <div class="footer__legal">
+        <nuxt-link to="/work-with-us">Work with us</nuxt-link>
         <nuxt-link to="/privacy-policy">Privacy Policy</nuxt-link>
         <nuxt-link to="/contact">Contact</nuxt-link>
       </div>
@@ -60,6 +56,9 @@ export default {
   padding: 0;
   padding-bottom: 0;
   margin-top: auto;
+  &--right {
+    grid-column: -2 / span 1;
+  }
 }
 @media (min-width: $bp-med) {
   .footer__social {
@@ -79,6 +78,7 @@ export default {
   &__legal,
   &__links
    {
+    margin-top: 3rem;
     padding-bottom: 1rem;
 
     a {
@@ -119,12 +119,12 @@ export default {
 .footer {
   #mc_embed_signup {
     margin-top: 2rem;
+    margin-bottom: 2rem;
     max-width: 50ch;
   }
 
   label {
     display: block;
-    max-width: 35ch;
   }
 
   input[type="email"] {

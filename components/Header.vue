@@ -19,7 +19,7 @@
             class="header__nav-toggle"
             aria-labelledby="menu-label"
             :aria-expanded="isSidebar"
-            @click="$store.dispatch('nav/toggleSidebar')"
+            @click="toggleSidebar"
           >
             <span></span>
           </button>
@@ -45,6 +45,7 @@ export default {
     }
   },
   computed: {
+    /** @returns { bool } */
     isSidebar() {
       return this.$store.getters['nav/toggleSidebar']
     }
@@ -60,6 +61,9 @@ export default {
       } else {
         this.logo = this.logoPrimary
       }
+    },
+    toggleSidebar() {
+      this.$store.commit('nav/toggleSidebar')
     }
   },
   mounted() {

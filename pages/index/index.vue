@@ -17,6 +17,9 @@
         let defaultLanguage = this.$store.state.vision.filter ( v => v.fields.slug === this.firstLanguageSlug )
         return defaultLanguage[0]
       },
+    },
+    created() {
+      this.$store.commit('graphics/resetCircle')
     }
   }
 </script>

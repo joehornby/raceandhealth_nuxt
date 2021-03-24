@@ -77,6 +77,9 @@ export default {
       return richTextHtml
     },
   },
+  created() {
+    this.$store.commit('graphics/resetCircle')
+  }
 }
 </script>
 

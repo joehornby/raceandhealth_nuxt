@@ -3,16 +3,6 @@
     <div class="grid-container grid-container__two-col overline">
       <div class="heading heading--left">
         <h1>{{ page.fields.title }}</h1>
-        <a v-if="page.fields.ctaUrl" :href="page.fields.ctaUrl">
-        <button class="btn btn-primary icon-arrow-right">
-          {{ page.fields.cta }}
-        </button>
-      </a>
-      <nuxt-link v-if="page.fields.ctaRoute" :to="page.fields.ctaRoute">
-        <button class="btn btn-primary icon-arrow-right">
-          {{ page.fields.cta }}
-        </button>
-      </nuxt-link>
       </div>
       <article class="page-content content--right" v-html="richTextHtml"></article>
       <div class="content--right">
@@ -47,7 +37,6 @@ import { documentToHtmlString } from "@contentful/rich-text-html-renderer"
       }
     },
     computed: {
-      
       page() {
         let page = this.$store.state.pages.find(
           el => el.fields.slug === this.slug
@@ -58,7 +47,10 @@ import { documentToHtmlString } from "@contentful/rich-text-html-renderer"
         let richTextHtml = documentToHtmlString(this.page.fields.content)
         return richTextHtml
       },
-    }
+    },
+  mounted() {
+    this.$store.commit('graphics/moveCircle')
+  }
   }
 </script>
 
