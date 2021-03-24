@@ -13,10 +13,10 @@ $color-red--darker: #d1574e;
 
 /* Dimensions */
 $min-width: 200px;
-$max-width: 1024px;
+$max-width: 1400px;
 @media only screen and (-webkit-min-device-pixel-ratio: 1){
   $min-width: 300px;
-  $max-width: 1400px;
+  $max-width: 2100px;
 }
 
 $header-height: 10rem;//180px;

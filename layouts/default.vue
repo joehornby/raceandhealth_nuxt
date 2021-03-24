@@ -4,7 +4,10 @@
     <Sidebar />
     <Nuxt id="content" />
     <div class="graphics">
-      <div class="circle-large circle-large--accent"></div>
+      <div 
+        class="circle-large circle-large--accent"
+        :style="circleVars"
+        ></div>
     </div>
     <Footer />
   </div>
@@ -12,14 +15,22 @@
 <script>
 export default {
   computed: {
+    circleVars() {
+      let circle = this.$store.getters['graphics/getCircle']
+      return {
+        '--circle-width': circle.width,
+        '--circle-bottom': circle.bottom, 
+        '--circle-left': circle.left 
+      }
+    },
     isSidebar() {
-        return this.$store.getters['navtoggleSidebar']
+      return this.$store.getters['nav/toggleSidebar']
     }
   },
   watch: {
     '$route': function() {
       if (process.client && this.isSidebar && window.innerWidth < 720) {
-          this.$store.dispatch('navtoggleSidebar')
+          this.$store.dispatch('nav/toggleSidebar')
       }
     }
   },
@@ -154,12 +165,16 @@ html {
     overflow:hidden;
     z-index: 0;
     .circle-large {
+      transition: all 1s cubic-bezier(.79,.14,.15,.86);
       position: absolute;
       border-radius: 50%;
-      width: 110vw;
-      height: 110vw;
-      bottom: -65vw;
-      left:-85vw;
+      width: calc(var(--circle-width) * 1vw);
+      height: calc(var(--circle-width) * 1vw);
+      bottom: 0;
+      left: 0;
+      transform: rotate(calc(var(--circle-left) * 1deg));
+      transform-origin: 50vw 50vh;
+      // transform: (calc(var(--circle-left) * -.1vw), calc(var(--circle-bottom) * .1vh), 0);
 
       &--accent {
         background-color: $color-red;
@@ -172,6 +187,7 @@ html {
       }
     }
     .circle-small {
+      transition: all 1s cubic-bezier(.79,.14,.15,.86);
       position: absolute;
       border-radius: 50%;
       width: 40vw;

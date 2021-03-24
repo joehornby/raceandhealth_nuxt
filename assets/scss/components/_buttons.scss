@@ -3,14 +3,14 @@
   border: none;
   font-family: inherit;
   font-size: inherit;
-  font-weight: 700;
+  // font-weight: 700;
   color: inherit;
   background-color: $color-red;
   cursor: pointer;
   padding: 1em 3.5em;
   display: inline-block;
   margin: 1rem 2rem 1rem 0;
-  letter-spacing: -0.05em;
+  letter-spacing: 0.01em;
   outline: none;
   position: relative;
   -webkit-transition: all 0.3s;
