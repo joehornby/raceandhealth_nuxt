@@ -86,7 +86,6 @@ export default {
       margin-right: 3em;
       color: $color-cream;
       position: relative;
-
       text-decoration: none;
 
       &:hover,
@@ -95,6 +94,17 @@ export default {
         text-decoration: none;
         outline: 0;
       }
+    }
+  }
+}
+@media (max-width: $bp-med) {
+
+  .footer__social {
+    margin-top: 5rem;
+    display: flex;
+    justify-content: space-around;
+    a {
+      margin: 0;
     }
   }
 }
@@ -107,7 +117,11 @@ export default {
     font-weight: normal;
     color: inherit;
     position: relative;
-
+    display: block;
+    margin-bottom: 1rem;
+    @media (min-width: $bp-med) {
+        display: inline-block;
+      }
     &::before,
     &:hover::before {
       content: none;

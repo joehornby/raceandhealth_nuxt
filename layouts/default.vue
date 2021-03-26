@@ -1,38 +1,56 @@
 <template>
   <div class="body">
-    <Header />
+    <HeaderTwoLogo v-if="isHome" />
+    <Header v-else />
     <Sidebar />
     <Nuxt id="content" />
-    <div class="graphics">
-      <div 
-        class="circle-large circle-large--accent"
-        :style="circleVars"
-        ></div>
-    </div>
+    <Graphics />
     <Footer />
   </div>
 </template>
 <script>
+import { mapGetters, mapMutations } from 'vuex'
 export default {
-  computed: {
-    circleVars() {
-      let circle = this.$store.getters['graphics/getCircle']
-      return {
-        '--circle-width': circle.width,
-        '--circle-bottom': circle.bottom, 
-        '--circle-left': circle.left 
-      }
-    },
-    isSidebar() {
-      return this.$store.getters['nav/toggleSidebar']
+  data() {
+    return {
+      windowWidth: null
     }
   },
+  computed: {
+    isHome() {
+      return this.$route.path == "/"
+    },
+    ...mapGetters({ 
+      isSidebar: "nav/getSidebarState"
+      })
+  },
+  methods: {
+    onResize() {
+      this.windowWidth = window.innerWidth
+    },
+    ...mapMutations({ 
+      toggleSidebar: "nav/toggleSidebar"
+    })
+  },
   watch: {
-    '$route': function() {
-      if (process.client && this.isSidebar && window.innerWidth < 720) {
-          this.$store.dispatch('nav/toggleSidebar')
+    $route() {
+      if (process.client && this.isSidebar && this.windowWidth < 720) {
+        this.toggleSidebar()
+      }
+    },
+    windowWidth() {
+      if (this.isSidebar && this.windowWidth > 1024) {
+        this.toggleSidebar()
       }
     }
+  },
+  mounted() {
+    this.$nextTick( () => {
+      window.addEventListener('resize', this.onResize)
+    })
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.onResize)
   },
   head: {
     script: [
@@ -155,49 +173,5 @@ html {
   padding: 0;
   min-height: 100%;
   height: auto;
-}
-@media only screen and (min-width:$bp-med) {
-  .graphics {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    min-height: 100%;
-    pointer-events: none;
-    overflow:hidden;
-    z-index: 0;
-    .circle-large {
-      transition: all 1s cubic-bezier(.79,.14,.15,.86);
-      position: absolute;
-      border-radius: 50%;
-      width: calc(var(--circle-width) * 1vw);
-      height: calc(var(--circle-width) * 1vw);
-      bottom: 0;
-      left: 0;
-      transform: rotate(calc(var(--circle-left) * 1deg));
-      transform-origin: 50vw 50vh;
-      // transform: (calc(var(--circle-left) * -.1vw), calc(var(--circle-bottom) * .1vh), 0);
-
-      &--accent {
-        background-color: $color-red;
-      }
-      &--light {
-        background-color: $color-cream;
-      }
-      &--dark {
-        background-color: $color-darkgrey;
-      }
-    }
-    .circle-small {
-      transition: all 1s cubic-bezier(.79,.14,.15,.86);
-      position: absolute;
-      border-radius: 50%;
-      width: 40vw;
-      height: 40vw;
-      bottom: -20vw;
-      left: 70vw;
-        &--accent {
-          background-color: $color-red;
-        }
-      }
-    }
 }
 </style>

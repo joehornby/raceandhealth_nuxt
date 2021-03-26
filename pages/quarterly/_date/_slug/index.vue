@@ -1,15 +1,14 @@
 <template>
-  <div class="section light">
     <div class="page-content grid-container grid-container__two-col overline">
-      <div class="heading heading--left">
+      <div class="heading heading--left relpos">
         <h1 class="headline">{{ article.fields.topic }}</h1>
         <h3>{{ article.fields.type }}</h3>
-        <nuxt-link to="/quarterly">&larr; Race &amp; Health Quarterly directory</nuxt-link>
+        <p v-for="category in article.fields.category" class="category">{{ category }}</p>
+        <h4>{{ article.fields.author }}</h4>
       </div>
       <div class="content--right" v-html="html(article.fields.content)">
       </div>
     </div>
-  </div>
 </template>
 
 <script>

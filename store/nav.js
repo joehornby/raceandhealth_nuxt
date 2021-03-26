@@ -2,21 +2,17 @@ import { stat } from "fs"
 
 /* Mobile navigation */
 export const state = () => ({
-  toggleSidebar: false
+  sidebar: false
 })
 
 export const mutations = {
-  TOGGLE_SIDEBAR(state) {
-    state.toggleSidebar = !state.toggleSidebar
-  }
-}
-
-export const actions = {
-  toggleSidebar({ commit }) {
-    commit("TOGGLE_SIDEBAR")
+  toggleSidebar(state) {
+    state.sidebar = !state.sidebar
   }
 }
 
 export const getters = {
-  toggleSidebar: state => state.toggleSidebar,
+  getSidebarState(state) {
+    return state.sidebar
+  }
 }

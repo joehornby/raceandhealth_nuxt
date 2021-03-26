@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="isSidebar" class="backdrop" @click="hideSidebar"></div>
+    <div v-if="isSidebar" class="backdrop" @click="toggleSidebar"></div>
     <transition name="slide">
       <nav
         v-if="isSidebar"
@@ -16,16 +16,13 @@
 </template>
 
 <script>
+import { mapGetters, mapMutations } from 'vuex'
 export default {
   computed: {
-    isSidebar() {
-      return this.$store.getters['nav/toggleSidebar']
-    }
+    ...mapGetters({ isSidebar: "nav/getSidebarState" })
   },
   methods: {
-    hideSidebar() {
-      this.$store.dispatch('nav/toggleSidebar')
-    }
+    ...mapMutations({ toggleSidebar: "nav/toggleSidebar" })
   }
 }
 </script>
@@ -46,13 +43,13 @@ export default {
     top: 0;
     right: 0;
     transform: translateX(0%);
-    transition: all 400ms ease-in-out;
+    transition: all 400ms cubic-bezier(.79,.14,.15,.86);
   }
 
   /* Transition */
   .slide-enter-active,
   .slide-leave-active {
-    transition: all 0.3s ease-out;
+    transition: all 0.3s cubic-bezier(.79,.14,.15,.86);
   }
   .slide-enter,
   .slide-leave-to {

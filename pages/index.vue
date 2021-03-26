@@ -1,5 +1,5 @@
 <template>
-  <div class="section section--full dark">
+  <div class="section section--homepage section--full dark">
     <a id="vision" class="anchor"></a>
     <div class="grid-container grid-container__two-col overline">
       <div class="heading heading--left">
@@ -45,12 +45,10 @@
 </template>
 
 <script>
-// import { createClient } from '~/plugins/contentful.js'
-// const client = createClient()
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer"
 
 export default {
-  transition: "page",
+  transition: "home",
   head() {
     return {
       title: `Race & Health | ${this.homepage.fields.title}`
@@ -76,9 +74,6 @@ export default {
       let richTextHtml = documentToHtmlString(this.homepage.fields.content)
       return richTextHtml
     },
-  },
-  created() {
-    this.$store.commit('graphics/resetCircle')
   }
 }
 </script>

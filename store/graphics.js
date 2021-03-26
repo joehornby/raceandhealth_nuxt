@@ -1,25 +1,33 @@
 export const state = () => ({
   circle: {
-    width: 110,
-    height: 110,
-    bottom: -65,
-    left: -85
-  }
+    diameter: 110,
+    x: -70,
+    y: 60
+  },
+  options: {
+    d: [ 90, 95, 110, 90, 45 ],
+    x: [ 70, 65, -80, -65, -15 ],
+    y: [ 70, -65, -85, 75, -10 ]
+  },
+  idx: 0
 })
 
 export const mutations = {
   moveCircle(state) {
     state.circle = {
-      width: Math.random() * 20 + 30,
-      bottom: Math.random() * 80 - 30,
-      left: Math.random() * 40 - 40
+      diameter: state.options.d[state.idx],
+      x: state.options.x[state.idx],
+      y: state.options.y[state.idx]
+    }
+    if( ++state.idx >= state.options.x.length) {
+      state.idx = 0  
     }
   },
   resetCircle(state) {
     state.circle = {
-        width: 110,
-        bottom: -65,
-        left: -85
+      diameter: 110,
+      x: -70,
+      y: 60
     }
   },
   setCircle(state, attributes) {
@@ -29,7 +37,9 @@ export const mutations = {
 
 export const getters = {
   getCircle: state => state.circle,
-  getCircleWidth: state => state.circle.width,
-  getCircleBottom: state => state.circle.bottom,
-  getCircleLeft: state => state.circle.left
 }
+
+function randBetween(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+

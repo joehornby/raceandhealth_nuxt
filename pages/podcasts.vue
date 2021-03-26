@@ -5,7 +5,9 @@
         <h1>{{ page.fields.title }}</h1>
       </div>
       <article class="page-content content--right" v-html="richTextHtml"></article>
+      <!-- EMBED PLAYER -->
       <div class="content--right">
+      <iframe allow="autoplay *; encrypted-media *; fullscreen *" frameborder="0" height="450" style="width:100%;max-width:660px;overflow:hidden;background:transparent;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.podcasts.apple.com/gb/podcast/race-health/id1554632071"></iframe>
         <a v-if="page.fields.ctaUrl" :href="page.fields.ctaUrl">
           <button class="btn btn-primary icon-arrow-right">
             {{ page.fields.cta }}
@@ -28,7 +30,7 @@ import { documentToHtmlString } from "@contentful/rich-text-html-renderer"
   export default {
     data() {
       return {
-        slug: this.$route.params.slug
+        slug: "podcasts"
       }
     },
     head() {

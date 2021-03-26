@@ -56,14 +56,6 @@ import { documentToHtmlString } from "@contentful/rich-text-html-renderer"
         return richTextHtml
       }
     },
-    mounted() {
-      this.$store.commit('graphics/setCircle',
-        {
-          width: 120,
-          bottom: -110,
-          left: 50
-        })
-    },
     methods: {
       html(doc) {
         return documentToHtmlString(doc)
@@ -81,7 +73,7 @@ import { documentToHtmlString } from "@contentful/rich-text-html-renderer"
       isPastEvent(dateString) {
         let today = new Date()
         let event = new Date(dateString)
-        return event.getDate() < today.getDate()
+        return event < today
       }
     }
   }

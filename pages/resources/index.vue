@@ -50,9 +50,6 @@ import { documentToHtmlString } from "@contentful/rich-text-html-renderer"
         let richTextHtml = documentToHtmlString(this.page.fields.content)
         return richTextHtml
       }
-    },
-    mounted() {
-      this.$store.commit('graphics/moveCircle')
     }
   }
 </script>

@@ -2,7 +2,7 @@
     <header class="header">
       <a class="skip" href="#content" tabindex="0">Skip to content</a>
       <div class="header-grid">
-        <div id="logo-img" class="header__logo header__logo--shrink">
+        <div id="logo-img" class="header__logo" :class="{'header__logo--shrink' : scrollPosition > 50 }">
           <nuxt-link tab-index="-1" to="/">
             <img :src="require(`~/assets/logo/${logo}`)" alt="Racism, Discrimination, Xenophobia and Health Logo">
           </nuxt-link>
@@ -35,19 +35,41 @@
 
 <script>
 import { mapGetters, mapMutations } from 'vuex'
+import throttle from 'lodash.throttle'
 
 export default {
   data() {
     return {
       scrollPosition: null,
-      logo: "RXDH_Logo_alt_light.svg"
+      logoPrimary: "RXDH_Logo_primary_light.svg",
+      logoAlt: "RXDH_Logo_alt_light.svg",
+      logo: "RXDH_Logo_primary_light.svg"
     }
   },
   computed: {
     ...mapGetters({ isSidebar: "nav/getSidebarState" })
   },
   methods: {
+    updateScroll() {
+      if (this.$route.path == "/") {
+        this.scrollPosition =  window.scrollY
+        this.changeLogo()
+      }
+    },
+    changeLogo() {
+      if (this.scrollPosition > 50) {
+        this.logo = this.logoAlt
+      } else {
+        this.logo = this.logoPrimary
+      }
+    },
     ...mapMutations({ toggleSidebar: "nav/toggleSidebar" })
+  },
+  mounted() {
+    window.addEventListener('scroll', throttle( this.updateScroll, 200 ))
+  },
+  destroy() {
+    window.removeEventListener('scroll', throttle( this.updateScroll, 200 ))
   }
 }
 </script>

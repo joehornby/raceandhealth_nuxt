@@ -7,6 +7,8 @@
 </template>
 
 <script>
+import { mapGetters, mapMutations } from 'vuex'
+
 export default {
   setup() {
     return {}
@@ -15,14 +17,14 @@ export default {
     menuItems() {
       let menuItems = this.$store.state.pages.filter(i => (i.fields.order > 0))
       return menuItems
-    }
+    },
+    ...mapGetters({ isSidebar: "nav/getSidebarState" })
   },
   methods: {
     hideSidebar() {
-      if (this.$store.getters['nav/toggleSidebar']) {
-        this.$store.dispatch('nav/toggleSidebar')
-      }
-    }
+      this.isSidebar ? this.toggleSidebar() : null
+    },
+    ...mapMutations({ toggleSidebar: "nav/toggleSidebar" })
   }
 }
 </script>

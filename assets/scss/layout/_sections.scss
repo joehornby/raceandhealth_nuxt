@@ -1,14 +1,15 @@
 .section {
   width: auto;
   padding: 25vh 0;
-  padding-top: 20rem;
   position: relative;
   display:block;
 
   // &--full {
   //   // min-height: 100%;
   // }
-
+  &--homepage {
+    padding-top: 20rem;
+  }
   & > div {
     z-index: 1;
   }

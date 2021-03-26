@@ -5,7 +5,9 @@ export const state = () => ({
   vision: null,
   resources: null,
   events: null,
-  quarterly: null
+  quarterly: null,
+  quarterlyLatestEdition: null,
+  quarterlyEditions: null
 });
 
 export const mutations = {
@@ -23,6 +25,14 @@ export const mutations = {
   },
   updateQuarterly: (state, quarterly) => {
     state.quarterly = quarterly
+
+    state.quarterlyEditions = quarterly.map( el => el.fields.date ).filter( (val, index, el) => el.indexOf(val) === index)
+
+    state.quarterlyLatestEdition = state.quarterlyEditions[0]
+
+  },
+  setCurrentEdition: (state, quarterlyCurrentEdition) => {
+    state.quarterlyCurrentEdition = quarterlyCurrentEdition
   }
 };
 

@@ -2,6 +2,27 @@
   transition: all .5s cubic-bezier(.79, .14, .15, .86);
   z-index: 9;
 }
-.page-enter, .page-leave-active {
+.page-enter,
+.page-leave-to {
+  opacity: 0;
+}
+
+.home-enter-active,
+.home-leave-active {
+  transition: all .5s cubic-bezier(.79, .14, .15, .86);
+}
+
+.home-enter,
+.home-leave-to {
+  opacity: 0;
+}
+
+.quarterly-enter-active,
+.quarterly-leave-active {
+  transition: all 0.5s ease-in-out;
+}
+
+.quarterly-enter,
+.quarterly-leave-to {
   opacity: 0;
 }
