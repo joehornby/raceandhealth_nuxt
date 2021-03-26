@@ -15,6 +15,7 @@
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer"
 
 export default {
+  scrollToTop: true,
   data() {
     return {
       slug: this.$route.params.slug
@@ -42,6 +43,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.page-content {
+  margin-top: 8rem;
+}
   h1.headline {
     font-family: 'Noto Serif JP', serif;
     font-size: 4rem;

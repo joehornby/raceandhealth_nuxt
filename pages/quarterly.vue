@@ -7,8 +7,7 @@
             <p class="overline overline--sm"><em>Editions</em></p>
             <ul class="editions">
               <li v-for="edition in editions">
-                <p v-if="edition==currentEdition" class="editions--current">{{ dateFormat(edition) }}</p>
-                <nuxt-link v-else :to="`/quarterly/${edition}`">
+                <nuxt-link :to="`/quarterly/${edition}`" :class="{ 'editions--current' : edition==currentEdition }">
                   {{ dateFormat(edition) }}
                 </nuxt-link>
               </li>
@@ -97,6 +96,7 @@
 
 <style lang="scss" scoped>
   nav {
+    font-size: 0.9rem;
     div:nth-child(2) {
       margin-top: 2rem;
     }
@@ -113,6 +113,10 @@
       margin: 0;
       padding: 0;
       font-family: $font-stack-bold;
+      text-decoration: none;
+      &:hover {
+        text-decoration: none;
+      }
       &::before {
         content: '\2192';
         margin-right: 1ex;
