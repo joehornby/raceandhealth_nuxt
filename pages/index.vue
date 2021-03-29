@@ -48,6 +48,7 @@
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer"
 
 export default {
+  scrollToTop: true,
   transition: "home",
   head() {
     return {

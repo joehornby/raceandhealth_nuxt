@@ -1,13 +1,17 @@
 <template>
   <div class="section light">
-    <div class="grid-container">
-      <h1>{{ page.fields.title }}</h1>
+    <div class="grid-container grid-container__two-col">
+      <div class="heading heading--left">
+        <h1>{{ page.fields.title }}</h1>
+      </div>
+      <div class="content content--right">
+        <p v-html="pageHtml"></p>
+      </div>
     </div>
     <div class="grid-container grid-container__two-col overline" v-for="event in events" :key="event.fields.slug">
       <div class="heading heading--left">
-        <p v-html="pageHtml"></p>
         <h3>{{ event.fields.type }} &mdash; {{ date(event.fields.date) }}</h3>
-        <h1>{{ event.fields.title }}</h1>
+        <h2>{{ event.fields.title }}</h2>
         <p v-if="!isPastEvent(event.fields.date)">
           {{ time(event.fields.date) }}
         </p>
@@ -82,12 +86,15 @@ import { documentToHtmlString } from "@contentful/rich-text-html-renderer"
 <style lang="scss" scoped>
   .page-content {
     margin-bottom: 5rem;
-    & h2 {
+    h2 {
       grid-column: 1 / span 1;
       padding-right: 1rem;
     }
     p, h3 {
       grid-column: 2 / span 1;
     }
-  } 
+  }
+  article h2 {
+    font-size: 10px;
+  }
 </style>

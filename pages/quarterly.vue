@@ -17,7 +17,7 @@
             <p class="overline overline--sm"><em>Categories</em></p>
             <ul>
               <li v-for="category in categories">
-                <nuxt-link :to="`/quarterly/category/${category.slug}`">
+                <nuxt-link :to="`/quarterly/category/${category.slug}`" :class="{ 'editions--current' : category.slug==currentCategory }">
                   {{ category.label }}
                 </nuxt-link>
               </li>
@@ -34,9 +34,10 @@
 
 <script>
   export default {
+    scrollToTop: true,
     head() {
       return {
-        title: `Race & Health | Quarterly | ${this.dateFormat(this.currentEdition)}`
+        title: `Race & Health | Quarterly`
       }
     },
     data: {
@@ -70,19 +71,17 @@
         return this.$store.state.quarterlyEditions
       },
       currentEdition() {
-        if (this.$route.params.date){
-          return this.$route.params.date
-        }
-        return this.$store.state.quarterlyLatestEdition
+        return this.$route.params.date
       },
       otherEditions() {
         return this.editions.filter( ed => ed != this.currentEdition )
       },
       categories() {
         let label = this.quarterly.map( el => el.fields.category[0] ).filter( (val, index, el) => el.indexOf(val) === index).filter( el => el !== "Introduction" )
-        console.log(label)
         return label.map( el => { return { label: el, slug: this.slugify(el) } })
-
+      },
+      currentCategory() {
+        return this.$route.params.category
       },
       intro() {
         return this.$store.state.quarterly.filter( el => el.fields.date === this.currentEdition ).find( el => el.fields.category == "Introduction" )

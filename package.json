@@ -18,10 +18,12 @@
     "fs": "0.0.1-security",
     "lodash.debounce": "^4.0.8",
     "lodash.throttle": "^4.1.1",
-    "nuxt": "^2.15.3"
+    "nuxt": "^2.15.3",
+    "universal-dom-parser": "0.0.3"
   },
   "devDependencies": {
     "@nuxtjs/dotenv": "^1.4.1",
+    "@nuxtjs/vuetify": "^1.11.3",
     "node-sass": "^4.14.1",
     "sass-loader": "^10.0.3"
   }

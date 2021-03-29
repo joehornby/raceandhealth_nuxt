@@ -14,5 +14,6 @@
   .quarterly-logo {
     fill: $color-darkgrey;
     max-width: 1024px;
+    margin-bottom: 2rem;
   }
 </style>

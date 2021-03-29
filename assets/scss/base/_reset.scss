@@ -43,3 +43,10 @@ p {
 ol {
   margin: inherit;
 }
+
+.sr-only {
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
+}

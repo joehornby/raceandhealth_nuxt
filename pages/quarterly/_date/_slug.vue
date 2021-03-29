@@ -3,7 +3,12 @@
       <div class="heading heading--left relpos">
         <h1 class="headline">{{ article.fields.topic }}</h1>
         <h3>{{ article.fields.type }}</h3>
-        <p v-for="category in article.fields.category" class="category">{{ category }}</p>
+        <nuxt-link :to="`/quarterly/category/${slugify(article.fields.category)}`" 
+          v-for="category in article.fields.category"
+          :key="category"
+          class="category">
+          {{ category }}
+        </nuxt-link>
         <h4>{{ article.fields.author }}</h4>
       </div>
       <div class="content--right" v-html="html(article.fields.content)">
@@ -37,6 +42,16 @@ export default {
   methods: {
     html(doc) {
       return documentToHtmlString(doc)
+    },
+    slugify(text) {
+      return text.toString()
+          .normalize('NFD')
+          .replace(/[\u0300-\u036f]/g, '')
+          .toLowerCase()
+          .trim()
+          .replace(/\s+/g, '-')
+          .replace(/[^\w-]+/g, '')
+          .replace(/--+/g, '-')
     }
   }
 }
@@ -46,9 +61,20 @@ export default {
 .page-content {
   margin-top: 8rem;
 }
+.category {
+  display: inline-block;
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+  &::before {
+    content: '/ ';
+  }
+}
   h1.headline {
     font-family: 'Noto Serif JP', serif;
-    font-size: 4rem;
+    font-size: 3rem;
+    font-size: calc(2rem + 1vw);
     line-height: 1.2;
   }
     .content--right {

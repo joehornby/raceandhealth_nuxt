@@ -16,7 +16,7 @@
           <p class="category" v-for="category in topic.fields.category">{{ category }}</p>
           <img v-if="topic.fields.image" :src="topic.fields.image.fields.file.url">
           <h2>{{ topic.fields.topic }}</h2>
-          <p>{{ topic.fields.excerpt }}</p>
+          <p class="excerpt">{{ topic.fields.excerpt }}</p>
         </div>
       </nuxt-link>
       </div>
@@ -86,6 +86,9 @@ h1.edition {
       h2 {
         margin-top:0;
       }
+      .excerpt {
+        margin-top: 2rem;
+      }
       &::before{
         content: 'Read more \2192';
       }
@@ -112,8 +115,8 @@ h1.edition {
     page-break-inside: avoid;
   }
   .title {
-    font-family: 'Noto Serif JP', serif;
-    font-size: 10rem;
+    // font-family: 'Noto Serif JP', serif;
+    // font-size: 10rem;
     &-intro {
       height: 145ex;
     }
