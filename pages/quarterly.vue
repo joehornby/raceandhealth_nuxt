@@ -1,7 +1,7 @@
 <template>
   <div class="section light">
-    <div class="grid-container grid-container__quarterly">
-        <QuarterlyLogo />
+    <div v-if="showLogo" class="grid-container grid-container__quarterly">
+        <QuarterlyLogo  />
         <nav class="relpos">
           <div>
             <p class="overline overline--sm"><em>Editions</em></p>
@@ -13,7 +13,7 @@
               </li>
             </ul>
           </div>
-          <div class="relpos">
+          <div v-if="!mobile" class="relpos">
             <p class="overline overline--sm"><em>Categories</em></p>
             <ul>
               <li v-for="category in categories">
@@ -23,18 +23,19 @@
               </li>
             </ul>
           </div>
-        </nav>   
+        </nav>  
+    </div>
+    <div v-else class="grid-container small-margin">
+      <nuxt-link :to="`/quarterly/${$route.params.date}`" class="back">&larr; Back to Quarterly</nuxt-link>
     </div>
     <transition name="quarterly">
       <NuxtChild :edition="currentEdition" :categories="categories" :key="$route.params.date" />
     </transition>
-    
   </div>
 </template>
 
 <script>
   export default {
-    scrollToTop: true,
     head() {
       return {
         title: `Race & Health | Quarterly`
@@ -88,6 +89,12 @@
       },
       currentArticles() {
         return this.$store.state.quarterly.filter( el => el.fields.date === this.currentEdition ).filter( el => el.fields.category != "Introduction" )
+      },
+      showLogo(){
+        return (this.$route.path.match(/\//g) || []).length < 3
+      },
+      mobile() {
+        return this.$mq == "sm"
       }
     }
   }
@@ -122,8 +129,19 @@
       }
     }
   }
-  a.back {
-    margin-bottom: 2rem;
+  .back {
+    font-size: 0.8em;
     z-index: 9999;
+  }
+  .small-margin {
+    margin-bottom: -5rem;
+  }
+  .quarterly-order {
+    display: grid;
+    grid-template-areas: 
+                  "logo"
+                  "content"
+                  "subnav";
+    
   }
 </style>

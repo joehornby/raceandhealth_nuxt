@@ -54,9 +54,7 @@ export default {
   /*
    ** Nuxt.js dev-modules
    */
-  buildModules: [
-    '@nuxtjs/vuetify',
-  ],
+  buildModules: [],
   /*
    ** Nuxt.js modules
    */
@@ -64,13 +62,22 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     "@nuxtjs/axios",
     "@nuxtjs/style-resources",
-    "@nuxtjs/markdownit"
+    "@nuxtjs/markdownit",
+    "nuxt-mq"
   ],
   styleResources: {
     scss: ["@/assets/scss/abstracts/_variables.scss"]
   },
   markdownit: {
     injected: true
+  },
+  'mq': {
+    defaultBreakpoint: 'sm',
+    breakpoints: {
+      sm: 450,
+      md: 1250,
+      lg: Infinity,
+    }
   },
   /*
    ** Axios module configuration
@@ -88,7 +95,9 @@ export default {
       };
     }
   },
-  generate: {},
+  generate: {
+    fallback: true
+  },
   env: {
     CTF_CDA_ACCESS_TOKEN: process.env.CTF_CDA_ACCESS_TOKEN,
     CTF_SPACE_ID: process.env.CTF_SPACE_ID,

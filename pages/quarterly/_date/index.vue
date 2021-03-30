@@ -30,6 +30,7 @@ import { documentToHtmlString } from "@contentful/rich-text-html-renderer"
 
   export default {
     props: ['edition'],
+    scrollToTop: true,
     data() {
       return {
         slug: "quarterly",
@@ -99,11 +100,11 @@ h1.edition {
   }
   .cols {
     &--2 {
-      columns: 2 200px;
+      columns: 35ch 2;
       column-gap: 1rem;
     }
     &--3 {
-      columns: 3 200px;
+      columns: 35ch 3;
       column-gap: 1rem;
     }
   }

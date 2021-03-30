@@ -19,6 +19,7 @@
     "lodash.debounce": "^4.0.8",
     "lodash.throttle": "^4.1.1",
     "nuxt": "^2.15.3",
+    "nuxt-mq": "^2.0.2",
     "universal-dom-parser": "0.0.3"
   },
   "devDependencies": {
