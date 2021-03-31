@@ -17,9 +17,6 @@
   -moz-transition: all 0.3s;
   transition: all 0.3s;
   position: relative;
-  min-width: 35ch;
-  // max-width: 100%;
-  width: clamp(50%, 35ch, 100%);
 
   &:after {
     content: '';
@@ -37,6 +34,8 @@
   color: $color-darkgrey;
   overflow: hidden;
   border: rgba($color-cream, 1) solid 2px;
+  width: clamp(50%, 35ch, 100%);
+
   &:active {
     background-color: $color-red;
     color: $color-cream;
@@ -87,6 +86,8 @@
   color: $color-cream;
   border: 2px solid $color-cream;
   border-radius: 50px;
+  width: clamp(50%, 35ch, 100%);
+
 
   &:hover,
   &:focus {
