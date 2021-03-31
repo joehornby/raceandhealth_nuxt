@@ -20,7 +20,7 @@
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer"
 
 export default {
-  scrollToTop: false,
+  scrollToTop: true,
   data() {
     return {
       slug: this.$route.params.slug

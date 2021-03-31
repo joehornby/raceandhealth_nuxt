@@ -17,6 +17,9 @@
   -moz-transition: all 0.3s;
   transition: all 0.3s;
   position: relative;
+  min-width: 35ch;
+  // max-width: 100%;
+  width: clamp(50%, 35ch, 100%);
 
   &:after {
     content: '';
@@ -33,7 +36,7 @@
   border-radius: 50px;
   color: $color-darkgrey;
   overflow: hidden;
-  border: rgba($color-cream,0) solid 2px;
+  border: rgba($color-cream, 1) solid 2px;
   &:active {
     background-color: $color-red;
     color: $color-cream;

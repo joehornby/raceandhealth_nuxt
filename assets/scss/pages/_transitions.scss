@@ -26,3 +26,12 @@
 .quarterly-leave-to {
   opacity: 0;
 }
+.ql-enter-active,
+.ql-leave-active {
+  transition: all 1s ease-in-out;
+}
+
+.ql-enter,
+.ql-leave-to {
+  opacity: 0;
+}

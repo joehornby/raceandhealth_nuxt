@@ -89,8 +89,4 @@ export default {
     left: unset;
     top: unset;
   }
-  button {
-    min-width: 50%;
-
-  }
 </style>

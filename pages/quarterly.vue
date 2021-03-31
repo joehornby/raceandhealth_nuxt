@@ -1,31 +1,33 @@
 <template>
   <div class="section light">
-    <div v-if="showLogo" class="grid-container grid-container__quarterly">
-        <QuarterlyLogo  />
-        <nav class="relpos">
-          <div>
-            <p class="overline overline--sm"><em>Editions</em></p>
-            <ul class="editions">
-              <li v-for="edition in editions">
-                <nuxt-link :to="`/quarterly/${edition}`" :class="{ 'editions--current' : edition==currentEdition }">
-                  {{ dateFormat(edition) }}
-                </nuxt-link>
-              </li>
-            </ul>
-          </div>
-          <div v-if="!mobile" class="relpos">
-            <p class="overline overline--sm"><em>Categories</em></p>
-            <ul>
-              <li v-for="category in categories">
-                <nuxt-link :to="`/quarterly/category/${category.slug}`" :class="{ 'editions--current' : category.slug==currentCategory }">
-                  {{ category.label }}
-                </nuxt-link>
-              </li>
-            </ul>
-          </div>
-        </nav>  
-    </div>
-    <div v-else class="grid-container small-margin">
+    <transition name="ql">
+      <div v-show="showLogo" class="grid-container grid-container__quarterly">
+          <QuarterlyLogo  />
+          <nav class="relpos">
+            <div>
+              <p class="overline overline--sm"><em>Editions</em></p>
+              <ul class="editions">
+                <li v-for="edition in editions">
+                  <nuxt-link :to="`/quarterly/${edition}`" :class="{ 'editions--current' : edition==currentEdition }">
+                    {{ dateFormat(edition) }}
+                  </nuxt-link>
+                </li>
+              </ul>
+            </div>
+            <div v-if="!mobile" class="relpos">
+              <p class="overline overline--sm"><em>Categories</em></p>
+              <ul>
+                <li v-for="category in categories">
+                  <nuxt-link :to="`/quarterly/category/${category.slug}`" :class="{ 'editions--current' : category.slug==currentCategory }">
+                    {{ category.label }}
+                  </nuxt-link>
+                </li>
+              </ul>
+            </div>
+          </nav>  
+      </div>
+    </transition>
+    <div v-show="!showLogo" class="grid-container small-margin">
       <nuxt-link :to="`/quarterly/${$route.params.date}`" class="back">&larr; Back to Quarterly</nuxt-link>
     </div>
     <transition name="quarterly">
@@ -135,13 +137,5 @@
   }
   .small-margin {
     margin-bottom: -5rem;
-  }
-  .quarterly-order {
-    display: grid;
-    grid-template-areas: 
-                  "logo"
-                  "content"
-                  "subnav";
-    
   }
 </style>
