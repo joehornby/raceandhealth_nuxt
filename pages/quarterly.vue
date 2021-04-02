@@ -28,7 +28,7 @@
       </div>
     </transition>
     <div v-show="!showLogo" class="grid-container small-margin">
-      <nuxt-link :to="`/quarterly/${$route.params.date}`" class="back">&larr; Back to Quarterly</nuxt-link>
+      <nuxt-link :to="`/quarterly/${currentEdition}`" class="back">&larr; Back to Quarterly</nuxt-link>
     </div>
     <transition name="quarterly">
       <NuxtChild :edition="currentEdition" :categories="categories" :key="$route.params.date" />
@@ -74,7 +74,8 @@
         return this.$store.state.quarterlyEditions
       },
       currentEdition() {
-        return this.$route.params.date
+        console.log(this.$route.params.date || this.$store.state.quarterlyLatestEdition)
+        return this.$route.params.date || this.$store.state.quarterlyLatestEdition
       },
       otherEditions() {
         return this.editions.filter( ed => ed != this.currentEdition )
