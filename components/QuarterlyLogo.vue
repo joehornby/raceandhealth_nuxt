@@ -13,6 +13,7 @@
 <style lang="scss" scoped>
   .quarterly-logo {
     fill: $color-darkgrey;
+    width: 100%;
     max-width: 1024px;
     margin-bottom: 2rem;
   }
