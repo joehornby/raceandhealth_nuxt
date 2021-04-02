@@ -43,8 +43,10 @@
         title: `Race & Health | Quarterly`
       }
     },
-    data: {
-      introduction: 'Introduction'
+    data() {
+      return {
+        introduction: 'Introduction'
+      }
     },
     methods: {
       html(content) {
@@ -74,7 +76,6 @@
         return this.$store.state.quarterlyEditions
       },
       currentEdition() {
-        console.log(this.$route.params.date || this.$store.state.quarterlyLatestEdition)
         return this.$route.params.date || this.$store.state.quarterlyLatestEdition
       },
       otherEditions() {
