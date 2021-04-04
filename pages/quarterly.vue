@@ -122,7 +122,8 @@
     &--current {
       margin: 0;
       padding: 0;
-      font-family: $font-stack-bold;
+      // font-family: $font-stack-bold;
+      font-weight: 700;
       text-decoration: none;
       &:hover {
         text-decoration: none;
