@@ -5,9 +5,12 @@
       <div class="heading heading--left">
         <h1>{{ pageTitle }}</h1>
         <p class="lang__title">
-          Select Language  <a href="#after-lang" class="skip skip--lang">Skip Languages</a>
+          <a @click="toggleLang" class="lang__select">
+          Select Language</a>  
+          <a href="#after-lang" class="skip skip--lang">Skip Languages</a>
+          
         </p>
-        <div class="lang__menu">
+        <div class="lang__menu" :class="{ 'show' : showLang }">
           <nuxt-link 
             v-for="lang in visionStatements" 
             :key="lang.fields.slug" 
@@ -58,7 +61,8 @@ export default {
   data() {
     return {
       homePageSlug: "home",
-      pageTitle: "Our Vision"
+      pageTitle: "Our Vision",
+      showLang: false,
     }
   },
   computed: {
@@ -75,6 +79,11 @@ export default {
       let richTextHtml = documentToHtmlString(this.homepage.fields.content)
       return richTextHtml
     },
+  },
+  methods: {
+    toggleLang() {
+      this.showLang = !this.showLang
+    }
   }
 }
 </script>
@@ -88,5 +97,25 @@ export default {
     position: relative;
     left: unset;
     top: unset;
+  }
+  .lang {
+    &__menu {
+      height: 0;
+      overflow: hidden;
+      transition: height 0.5s ease-in-out;
+      &.show {
+        height: auto;
+      }
+    }
+    &__select {
+      text-decoration: none !important;
+    }
+  }
+  @media (min-width: $bp-med) {
+    .lang {
+      &__menu {
+        height: auto;
+      }
+    }
   }
 </style>
