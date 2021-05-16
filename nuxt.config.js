@@ -54,7 +54,19 @@ export default {
   /*
    ** Nuxt.js dev-modules
    */
-  buildModules: [],
+  buildModules: [
+    '@nuxtjs/netlify-files',
+  ],
+  netlifyFiles: {
+    netlifyToml: {
+      redirects: [
+        {
+          from: 'https://raceandhealth.netlify.app',
+          to: 'https://raceandhealth.org'
+        }
+      ]
+    }
+  },
   /*
    ** Nuxt.js modules
    */
