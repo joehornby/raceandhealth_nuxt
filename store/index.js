@@ -46,7 +46,7 @@ export const actions = {
       });
       if (response.items.length > 0) commit("updatePages", response.items);
     } catch (err) {
-      console.error(err)
+      return err
     }
   },
   async getVision({ commit }) {
@@ -58,7 +58,7 @@ export const actions = {
       });
       if (response.items.length > 0) commit("updateVision", response.items)
     } catch (err) {
-      console.error(err)
+      return err
     }
   },
   async getResources({ commit }) {
@@ -70,7 +70,7 @@ export const actions = {
       });
       if (response.items.length > 0) commit("updateResources", response.items)
     } catch (err) {
-      console.error(err)
+      return err
     }
   },
   async getEvents({ commit }) {
@@ -82,7 +82,7 @@ export const actions = {
       });
       if (response.items.length > 0) commit("updateEvents", response.items)
     } catch (err) {
-      console.error(err)
+      return err
     }
   },
   async getQuarterly({ commit }) {
@@ -94,7 +94,7 @@ export const actions = {
       });
       if (response.items.length > 0) commit("updateQuarterly", response.items)
     } catch (err) {
-      console.error(err)
+      return err
     }
   }
 };
