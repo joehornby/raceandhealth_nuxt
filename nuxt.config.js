@@ -65,6 +65,12 @@ export default {
           to: 'https://raceandhealth.org',
           force: true,
           status: 301
+        },
+        {
+          from: 'https://raceandhealth.netlify.app/*',
+          to: 'https://raceandhealth.org/:splat',
+          force: true,
+          status: 301
         }
       ]
     }
