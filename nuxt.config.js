@@ -62,7 +62,9 @@ export default {
       redirects: [
         {
           from: 'https://raceandhealth.netlify.app',
-          to: 'https://raceandhealth.org'
+          to: 'https://raceandhealth.org',
+          force: true,
+          status: 301
         }
       ]
     }
