@@ -1,7 +1,15 @@
 <template>
   <div>
     <ul>
-      <li v-for="menuItem in menuItems" :key="menuItem.fields.slug"><nuxt-link :to="`/${menuItem.fields.slug}`" @click.native="hideSidebar">{{ menuItem.fields.title }}</nuxt-link></li>
+      <li 
+        v-for="menuItem in menuItems" 
+        :key="menuItem.fields.slug">
+        <nuxt-link 
+          :to="`/${menuItem.fields.slug}`" 
+          @click.native="hideSidebar">
+            {{ menuItem.fields.title.replace('Race & Health ', '') }}
+        </nuxt-link>
+      </li>
     </ul>
   </div>
 </template>
