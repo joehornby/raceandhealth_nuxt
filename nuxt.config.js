@@ -45,7 +45,8 @@ export default {
     "~/plugins/vision", 
     "~/plugins/resources", 
     "~/plugins/events",
-    "~/plugins/quarterly"],
+    "~/plugins/quarterly"
+  ],
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components
