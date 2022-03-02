@@ -1,9 +1,10 @@
 /* General Button Style Reset */
 .btn {
-  border: 1px solid $color-cream;
+  // border: 1px solid $color-cream;
+  border: none;
   font-family: inherit;
   font-size: inherit;
-  // font-weight: 700;
+  font-weight: 400;
   color: inherit;
   background-color: $color-red;
   cursor: pointer;
