@@ -1,7 +1,6 @@
 <template>
-  <div class="section light">
+  <div v-if="intro != undefined" class="section light">
     <div class="grid-container grid-container__two-col--thirds overline">
-
       <div class="heading heading--left">
         <h1 class="edition relpos">{{ dateFormat(edition) }} Edition.</h1>
       </div>
@@ -21,11 +20,40 @@
       </nuxt-link>
       </div>
     </div>
-    
+  </div>
+  <div v-else-if="currentArticles.length == 1"  class="section light">
+    <div class="grid-container grid-container__two-col--thirds overline">
+      <div class="heading heading--left">
+        <h1 class="headline">{{ currentArticles[0].fields.topic }}</h1>
+      </div>
+      <div class="content cols--2">
+        <p  class="quarterly-intro" v-html="html(currentArticles[0].fields.content)" ></p>
+      </div>
+    </div>
+  </div>
+  <div v-else class="section light">
+    <div class="grid-container overline">
+      <div class="heading heading--left">
+        <h1 class="edition relpos">{{ dateFormat(edition) }} Edition.</h1>
+      </div>
+    </div>
+    <div class="grid-container cols--2 masonry">
+      <div class="topic cards">
+        <nuxt-link v-for="topic in currentArticles" :key="topic.fields.slug" :to="`/quarterly/${topic.fields.date}/${topic.fields.slug}`">
+        <div class="card light">
+          <p class="category" v-for="category in topic.fields.category">{{ category }}</p>
+          <img v-if="topic.fields.image" :src="topic.fields.image.fields.file.url">
+          <h2>{{ topic.fields.topic }}</h2>
+          <p class="excerpt">{{ topic.fields.excerpt }}</p>
+        </div>
+      </nuxt-link>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import { BLOCKS } from '@contentful/rich-text-types'
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer"
 
   export default {
@@ -54,8 +82,25 @@ import { documentToHtmlString } from "@contentful/rich-text-html-renderer"
         let monthYear = new Intl.DateTimeFormat(undefined, { month: 'long', year: 'numeric' }).format(date)
         return monthYear
       },
-      html(content) {
-        return documentToHtmlString(content)
+      html(doc) {
+        const options = {
+          renderNode: {
+            [BLOCKS.EMBEDDED_ASSET]: (node, children) => {
+              // render the EMBEDDED_ASSET
+              return `
+                <img
+                  class="embedded-asset"
+                  src=https://${node.data.target.fields.file.url}
+                  height="auto"
+                  width="100%"
+                  alt="${node.data.target.fields.description}"
+                />
+              `
+            }
+          }
+        }
+
+        return documentToHtmlString(doc, options)
       }
     }
   }

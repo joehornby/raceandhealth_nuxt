@@ -32,6 +32,7 @@
 </template>
 
 <script>
+import { BLOCKS } from '@contentful/rich-text-types'
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer"
 
   export default {
@@ -56,8 +57,25 @@ import { documentToHtmlString } from "@contentful/rich-text-html-renderer"
         return page
       },
       pageHtml() {
-        let richTextHtml = documentToHtmlString(this.page.fields.content)
-        return richTextHtml
+        const options = {
+          renderNode: {
+            [BLOCKS.EMBEDDED_ASSET]: (node, children) => {
+              // render the EMBEDDED_ASSET
+              return `
+                <img
+                  class="embedded-asset"
+                  src=https://${node.data.target.fields.file.url}
+                  height="auto"
+                  width="100%"
+                  alt="${node.data.target.fields.description}"
+                />
+              `
+            }
+          }
+        }
+
+        return documentToHtmlString(this.page.fields.content, options)
+
       }
     },
     methods: {
