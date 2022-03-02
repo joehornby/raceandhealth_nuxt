@@ -38,63 +38,73 @@ export const mutations = {
 
 export const actions = {
   async getPages({ commit }) {
-    try {
       if (!client) return
-      const response = await client.getEntries({
+      await client.getEntries({
         content_type: process.env.CTF_PAGE_TYPE_ID,
+        include: 10,
         order: "fields.order"
-      });
-      if (response.items.length > 0) commit("updatePages", response.items);
-    } catch (err) {
-      return err
-    }
+      })
+      .then((pages) => {
+        if (pages.items.length > 0) commit("updatePages", pages.items);
+      })
+      .catch (err => {
+        this.$nuxt.error({ statusCode: err.sys.id, message: err.sys.message })
+      })
+      
   },
   async getVision({ commit }) {
-    try {
       if (!client) return
-      const response = await client.getEntries({
+      await client.getEntries({
         content_type: process.env.CTF_OURVISION_TYPE_ID,
         order: "sys.createdAt"
-      });
-      if (response.items.length > 0) commit("updateVision", response.items)
-    } catch (err) {
-      return err
-    }
+      })
+      .then(response => {
+        if (response.items.length > 0) commit("updateVision", response.items)
+      })
+      .catch (err => {
+        this.$nuxt.error({ statusCode: err.sys.id, message: err.sys.message })
+      })
   },
   async getResources({ commit }) {
-    try {
-      if(!client) return
-      const response = await client.getEntries({
-        content_type: process.env.CTF_RESOURCES_TYPE_ID,
-        order: "-sys.updatedAt"
-      });
+    if(!client) return
+    await client.getEntries({
+      content_type: process.env.CTF_RESOURCES_TYPE_ID,
+      include: 10,
+      order: "-sys.updatedAt"
+    })
+    .then(response => {
       if (response.items.length > 0) commit("updateResources", response.items)
-    } catch (err) {
-      return err
-    }
+    })
+    .catch (err => {
+      this.$nuxt.error({ statusCode: err.sys.id, message: err.sys.message })
+    })
   },
   async getEvents({ commit }) {
-    try {
-      if(!client) return
-      const response = await client.getEntries({
-        content_type: process.env.CTF_EVENTS_TYPE_ID,
-        order: "-sys.createdAt"
-      });
+    if(!client) return
+    await client.getEntries({
+      content_type: process.env.CTF_EVENTS_TYPE_ID,
+      include: 10,
+      order: "-sys.createdAt",
+    })
+    .then(response => {
       if (response.items.length > 0) commit("updateEvents", response.items)
-    } catch (err) {
-      return err
-    }
+    })
+    .catch (err => {
+      this.$nuxt.error({ statusCode: err.sys.id, message: err.sys.message })
+    })
   },
   async getQuarterly({ commit }) {
-    try {
-      if(!client) return
-      const response = await client.getEntries({
-        content_type: process.env.CTF_QUARTERLY_TYPE_ID,
-        order: "-fields.date"
-      });
+    if(!client) return
+    await client.getEntries({
+      content_type: process.env.CTF_QUARTERLY_TYPE_ID,
+      include: 10,
+      order: "-fields.date"
+    })
+    .then(response => {
       if (response.items.length > 0) commit("updateQuarterly", response.items)
-    } catch (err) {
-      return err
-    }
+    })
+    .catch (err => {
+      this.$nuxt.error({ statusCode: err.sys.id, message: err.sys.message })
+    })
   }
 };

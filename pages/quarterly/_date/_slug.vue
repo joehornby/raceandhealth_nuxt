@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import { BLOCKS } from '@contentful/rich-text-types'
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer"
 
 export default {
@@ -33,15 +34,39 @@ export default {
   },
   computed: {
     article() {
-      let article = this.$store.state.quarterly.find(
-        el => el.fields.slug === this.$route.params.slug
-      )
-      return article
+      try {
+        let article = this.$store.state.quarterly.find(
+          el => el.fields.slug === this.$route.params.slug
+        )
+        if (article === undefined){
+          throw new Error()
+        }
+        return article
+      } catch(e) {
+        this.$nuxt.error({ statusCode: 404, message: "Page not found" })
+      } 
     }
   },
   methods: {
     html(doc) {
-      return documentToHtmlString(doc)
+      const options = {
+          renderNode: {
+            [BLOCKS.EMBEDDED_ASSET]: (node, children) => {
+              // render the EMBEDDED_ASSET
+              return `
+                <img
+                  class="embedded-asset"
+                  src=https://${node.data.target.fields.file.url}
+                  height="auto"
+                  width="100%"
+                  alt="${node.data.target.fields.description}"
+                />
+              `
+            }
+          }
+        }
+
+        return documentToHtmlString(doc, options)
     },
     slugify(text) {
       return text.toString()
