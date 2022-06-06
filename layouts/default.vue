@@ -59,7 +59,7 @@ export default {
         crossorigin: 'anonymous',
       },
       {
-        src: 'http://static.getclicky.com/101368121.js',
+        src: 'https://static.getclicky.com/101368121.js',
         body: true,
       },
     ],
