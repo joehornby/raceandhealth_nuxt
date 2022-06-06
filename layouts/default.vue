@@ -58,6 +58,10 @@ export default {
         src: 'https://kit.fontawesome.com/46fe3ff0d6.js',
         crossorigin: 'anonymous',
       },
+      {
+        src: 'http://static.getclicky.com/101368121.js',
+        body: true,
+      },
     ],
     link: [
       {
